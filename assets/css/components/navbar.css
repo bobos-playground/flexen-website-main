@@ -1861,3 +1861,402 @@
         font-size: 14px;
     }
 }
+
+/* =========================================================
+   FLEXEN MOBILE — STANDARD NAVIGATION LINKS
+   How It Works / Products / Resources / Contact
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   STANDARD LINK
+   --------------------------------------------------------- */
+
+.mobile-navigation__item > a {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    min-height: 52px;
+
+    padding: 0 16px;
+
+    color: #071F5C;
+
+    background: transparent;
+
+    border-radius: 9px;
+
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+
+    line-height: 1.4;
+
+    text-decoration: none;
+
+    transition:
+        color 180ms ease,
+        background-color 180ms ease,
+        padding-left 180ms ease;
+}
+
+
+/* ---------------------------------------------------------
+   HOVER
+   --------------------------------------------------------- */
+
+.mobile-navigation__item > a:hover {
+    color: #0797F5;
+
+    background:
+        rgba(7, 151, 245, 0.055);
+
+    padding-left: 20px;
+}
+
+
+/* ---------------------------------------------------------
+   ACTIVE PAGE
+   --------------------------------------------------------- */
+
+.mobile-navigation__item > a[aria-current="page"] {
+    color: #0797F5;
+
+    background:
+        rgba(7, 151, 245, 0.075);
+
+    font-weight: 700;
+}
+
+
+/* ---------------------------------------------------------
+   ACTIVE PAGE INDICATOR
+   --------------------------------------------------------- */
+
+.mobile-navigation__item > a[aria-current="page"]::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 50%;
+
+    width: 3px;
+    height: 24px;
+
+    transform: translateY(-50%);
+
+    background: #0797F5;
+
+    border-radius:
+        0 4px 4px 0;
+}
+
+
+/* ---------------------------------------------------------
+   LINK SPACING
+   --------------------------------------------------------- */
+
+.mobile-navigation__item + .mobile-navigation__item {
+    margin-top: 2px;
+}
+
+
+/* ---------------------------------------------------------
+   FOCUS
+   --------------------------------------------------------- */
+
+.mobile-navigation__item > a:focus-visible {
+    outline:
+        3px solid rgba(7, 151, 245, 0.28);
+
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   DARK MOBILE NAVIGATION
+   ========================================================= */
+
+.mobile-navigation--dark
+.mobile-navigation__item > a {
+    color: rgba(255, 255, 255, 0.94);
+}
+
+
+.mobile-navigation--dark
+.mobile-navigation__item > a:hover {
+    color: #35A9FF;
+
+    background:
+        rgba(255, 255, 255, 0.06);
+}
+
+
+.mobile-navigation--dark
+.mobile-navigation__item > a[aria-current="page"] {
+    color: #35A9FF;
+
+    background:
+        rgba(7, 151, 245, 0.10);
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .mobile-navigation__item > a {
+        min-height: 50px;
+
+        padding-left: 14px;
+        padding-right: 14px;
+
+        font-size: 15px;
+    }
+
+    .mobile-navigation__item > a:hover {
+        padding-left: 18px;
+    }
+}
+
+/* =========================================================
+   FLEXEN MOBILE NAVIGATION
+   GET A QUOTE CTA
+   ========================================================= */
+
+.mobile-navigation__actions {
+    width: 100%;
+
+    margin-top: 24px;
+    padding-top: 22px;
+
+    border-top: 1px solid rgba(7, 31, 92, 0.09);
+}
+
+
+/* =========================================================
+   GET A QUOTE BUTTON
+   ========================================================= */
+
+.mobile-navigation__actions .button--primary {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 52px;
+
+    padding: 0 22px;
+
+    color: #ffffff;
+
+    background: #0797F5;
+
+    border: 0;
+    border-radius: 9px;
+
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+
+    line-height: 1;
+
+    text-align: center;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 7px 18px rgba(7, 151, 245, 0.20);
+
+    transition:
+        background-color 180ms ease,
+        transform 180ms ease,
+        box-shadow 180ms ease;
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.mobile-navigation__actions .button--primary:hover {
+    background: #087FE0;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 10px 24px rgba(7, 151, 245, 0.28);
+}
+
+
+/* =========================================================
+   ACTIVE / PRESSED
+   ========================================================= */
+
+.mobile-navigation__actions .button--primary:active {
+    background: #0577C7;
+
+    transform: translateY(0);
+
+    box-shadow:
+        0 4px 10px rgba(7, 151, 245, 0.18);
+}
+
+
+/* =========================================================
+   FOCUS
+   ========================================================= */
+
+.mobile-navigation__actions .button--primary:focus-visible {
+    outline:
+        3px solid rgba(7, 151, 245, 0.30);
+
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   SUBTLE SHINE
+   ========================================================= */
+
+.mobile-navigation__actions
+.button--primary::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 70%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.18),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    transition:
+        left 500ms ease;
+}
+
+
+.mobile-navigation__actions
+.button--primary:hover::before {
+    left: 140%;
+}
+
+
+/* =========================================================
+   OPTIONAL ARROW
+   ========================================================= */
+
+/*
+   If you later add:
+
+   <span>Get a Quote</span>
+   <span class="button__arrow">→</span>
+
+   this will style it.
+*/
+
+.mobile-navigation__actions
+.button__arrow {
+    margin-left: 10px;
+
+    font-size: 18px;
+
+    line-height: 1;
+
+    transition:
+        transform 180ms ease;
+}
+
+
+.mobile-navigation__actions
+.button--primary:hover
+.button__arrow {
+    transform: translateX(3px);
+}
+
+
+/* =========================================================
+   DARK MOBILE MENU
+   ========================================================= */
+
+.mobile-navigation--dark
+.mobile-navigation__actions {
+    border-top-color:
+        rgba(255, 255, 255, 0.10);
+}
+
+
+.mobile-navigation--dark
+.mobile-navigation__actions
+.button--primary {
+    background: #0797F5;
+
+    box-shadow:
+        0 8px 22px rgba(7, 151, 245, 0.25);
+}
+
+
+.mobile-navigation--dark
+.mobile-navigation__actions
+.button--primary:hover {
+    background: #159FF5;
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .mobile-navigation__actions {
+        margin-top: 20px;
+        padding-top: 18px;
+    }
+
+    .mobile-navigation__actions
+    .button--primary {
+        min-height: 50px;
+
+        padding-left: 18px;
+        padding-right: 18px;
+
+        font-size: 14px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .mobile-navigation__actions
+    .button--primary,
+    .mobile-navigation__actions
+    .button--primary::before {
+        transition: none;
+    }
+}

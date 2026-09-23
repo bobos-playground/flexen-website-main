@@ -864,3 +864,418 @@
     }
 
 }
+
+/* =========================================================
+   FLEXEN — SERVICES DROPDOWN
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   1. DROPDOWN CONTAINER
+   --------------------------------------------------------- */
+
+.nav-dropdown {
+    position: relative;
+}
+
+
+/* ---------------------------------------------------------
+   2. DROPDOWN TRIGGER
+   --------------------------------------------------------- */
+
+.nav-dropdown__trigger {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    min-height: 46px;
+
+    padding: 0 15px;
+
+    margin: 0;
+
+    color: #0B1F3A;
+
+    background: transparent;
+
+    border: 0;
+    border-radius: 7px;
+
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+
+/* ---------------------------------------------------------
+   3. TRIGGER HOVER
+   --------------------------------------------------------- */
+
+.nav-dropdown__trigger:hover {
+    color: #0B5FA5;
+
+    background: rgba(11, 95, 165, 0.06);
+}
+
+
+/* ---------------------------------------------------------
+   4. TRIGGER FOCUS
+   --------------------------------------------------------- */
+
+.nav-dropdown__trigger:focus-visible {
+    outline: 3px solid rgba(11, 95, 165, 0.25);
+    outline-offset: 3px;
+}
+
+
+/* ---------------------------------------------------------
+   5. DROPDOWN ARROW
+   --------------------------------------------------------- */
+
+.nav-dropdown__icon {
+    flex-shrink: 0;
+
+    width: 12px;
+    height: 12px;
+
+    transition:
+        transform 0.2s ease;
+}
+
+
+/* Rotate arrow when menu is open */
+
+.nav-dropdown__trigger[aria-expanded="true"]
+.nav-dropdown__icon {
+    transform: rotate(180deg);
+}
+
+
+/* Open trigger */
+
+.nav-dropdown__trigger[aria-expanded="true"] {
+    color: #0B5FA5;
+
+    background: rgba(11, 95, 165, 0.06);
+}
+
+
+/* ---------------------------------------------------------
+   6. ACTIVE INDICATOR
+   --------------------------------------------------------- */
+
+.nav-dropdown__trigger[aria-expanded="true"]::after {
+    content: "";
+
+    position: absolute;
+
+    left: 15px;
+    right: 15px;
+    bottom: 5px;
+
+    height: 2px;
+
+    background: #0B5FA5;
+
+    border-radius: 999px;
+}
+
+
+/* ---------------------------------------------------------
+   7. DROPDOWN PANEL
+   --------------------------------------------------------- */
+
+.nav-dropdown__menu {
+    position: absolute;
+
+    top: calc(100% + 10px);
+    left: 50%;
+
+    width: 330px;
+
+    transform: translateX(-50%);
+
+    padding: 8px;
+
+    background: #ffffff;
+
+    border: 1px solid rgba(11, 31, 58, 0.09);
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 18px 45px rgba(7, 21, 41, 0.12),
+        0 4px 12px rgba(7, 21, 41, 0.05);
+
+    z-index: 1100;
+
+    animation: flexenDropdownIn 0.18s ease-out;
+}
+
+
+/* ---------------------------------------------------------
+   8. DROPDOWN ANIMATION
+   --------------------------------------------------------- */
+
+@keyframes flexenDropdownIn {
+
+    from {
+        opacity: 0;
+        transform:
+            translateX(-50%)
+            translateY(-6px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateX(-50%)
+            translateY(0);
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   9. DROPDOWN LINKS
+   --------------------------------------------------------- */
+
+.nav-dropdown__menu a {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+    width: 100%;
+
+    padding: 13px 14px;
+
+    color: #0B1F3A;
+
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    transition:
+        background-color 0.18s ease,
+        color 0.18s ease;
+}
+
+
+/* Main link title */
+
+.nav-dropdown__menu a span {
+    display: block;
+
+    font-size: 0.9rem;
+    font-weight: 650;
+
+    line-height: 1.25;
+}
+
+
+/* Supporting text */
+
+.nav-dropdown__menu a small {
+    display: block;
+
+    color: #64748B;
+
+    font-size: 0.78rem;
+    font-weight: 400;
+
+    line-height: 1.35;
+}
+
+
+/* ---------------------------------------------------------
+   10. DROPDOWN LINK HOVER
+   --------------------------------------------------------- */
+
+.nav-dropdown__menu a:hover {
+    background: rgba(11, 95, 165, 0.06);
+
+    color: #0B5FA5;
+}
+
+
+.nav-dropdown__menu a:hover small {
+    color: #52718D;
+}
+
+
+/* ---------------------------------------------------------
+   11. DROPDOWN LINK FOCUS
+   --------------------------------------------------------- */
+
+.nav-dropdown__menu a:focus-visible {
+    outline: 2px solid rgba(11, 95, 165, 0.3);
+    outline-offset: -2px;
+}
+
+
+/* ---------------------------------------------------------
+   12. FIRST ITEM
+   --------------------------------------------------------- */
+
+.nav-dropdown__menu a:first-child {
+    border-bottom: 1px solid rgba(11, 31, 58, 0.07);
+
+    margin-bottom: 5px;
+
+    padding-bottom: 15px;
+}
+
+
+/* ---------------------------------------------------------
+   13. MOBILE
+   --------------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+    .nav-dropdown {
+        width: 100%;
+    }
+
+
+    .nav-dropdown__trigger {
+        width: 100%;
+
+        justify-content: space-between;
+
+        min-height: 48px;
+
+        padding: 0 14px;
+    }
+
+
+    .nav-dropdown__menu {
+        position: static;
+
+        width: 100%;
+
+        transform: none;
+
+        margin-top: 4px;
+
+        padding: 5px;
+
+        border: 0;
+
+        border-radius: 8px;
+
+        background: rgba(11, 95, 165, 0.035);
+
+        box-shadow: none;
+
+        animation: none;
+    }
+
+
+    .nav-dropdown__menu a {
+        padding: 12px;
+    }
+
+
+    .nav-dropdown__menu a:first-child {
+        margin-bottom: 3px;
+        padding-bottom: 12px;
+    }
+
+}
+
+
+/* ---------------------------------------------------------
+   14. DARK THEME
+   --------------------------------------------------------- */
+
+[data-theme="dark"] .nav-dropdown__trigger {
+    color: #EAF2F8;
+}
+
+
+[data-theme="dark"] .nav-dropdown__trigger:hover,
+[data-theme="dark"]
+.nav-dropdown__trigger[aria-expanded="true"] {
+    color: #6CB6EA;
+
+    background: rgba(108, 182, 234, 0.08);
+}
+
+
+[data-theme="dark"]
+.nav-dropdown__trigger[aria-expanded="true"]::after {
+    background: #6CB6EA;
+}
+
+
+[data-theme="dark"] .nav-dropdown__menu {
+    background: #071529;
+
+    border-color: rgba(255, 255, 255, 0.09);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+
+[data-theme="dark"] .nav-dropdown__menu a {
+    color: #EAF2F8;
+}
+
+
+[data-theme="dark"] .nav-dropdown__menu a small {
+    color: #94A8BA;
+}
+
+
+[data-theme="dark"] .nav-dropdown__menu a:hover {
+    color: #6CB6EA;
+
+    background: rgba(108, 182, 234, 0.08);
+}
+
+
+[data-theme="dark"] .nav-dropdown__menu a:hover small {
+    color: #B5C7D6;
+}
+
+
+[data-theme="dark"] .nav-dropdown__menu a:first-child {
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+
+/* ---------------------------------------------------------
+   15. REDUCED MOTION
+   --------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .nav-dropdown__menu {
+        animation: none;
+    }
+
+    .nav-dropdown__icon {
+        transition: none;
+    }
+
+    .nav-dropdown__trigger,
+    .nav-dropdown__menu a {
+        transition: none;
+    }
+}

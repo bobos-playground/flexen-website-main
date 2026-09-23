@@ -1279,3 +1279,125 @@
         transition: none;
     }
 }
+
+/* =========================================================
+   FLEXEN — MARKETS DROPDOWN
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   MARKETS DROPDOWN WIDTH
+   --------------------------------------------------------- */
+
+.nav-dropdown__menu--markets {
+    width: 300px;
+}
+
+
+/* ---------------------------------------------------------
+   MARKET LINKS
+   --------------------------------------------------------- */
+
+.nav-dropdown__menu--markets a {
+    position: relative;
+
+    padding: 14px 15px;
+}
+
+
+/* ---------------------------------------------------------
+   MARKET NAME
+   --------------------------------------------------------- */
+
+.nav-dropdown__menu--markets a span {
+    font-size: 0.92rem;
+    font-weight: 650;
+
+    color: #0B1F3A;
+}
+
+
+/* ---------------------------------------------------------
+   MARKET DESCRIPTION
+   --------------------------------------------------------- */
+
+.nav-dropdown__menu--markets a small {
+    color: #64748B;
+
+    font-size: 0.77rem;
+    line-height: 1.35;
+}
+
+
+/* ---------------------------------------------------------
+   HOVER
+   --------------------------------------------------------- */
+
+.nav-dropdown__menu--markets a:hover {
+    background: rgba(11, 95, 165, 0.06);
+}
+
+
+.nav-dropdown__menu--markets a:hover span {
+    color: #0B5FA5;
+}
+
+
+/* ---------------------------------------------------------
+   FIRST ITEM
+   --------------------------------------------------------- */
+
+.nav-dropdown__menu--markets a:first-child {
+    margin-bottom: 5px;
+
+    padding-bottom: 15px;
+
+    border-bottom: 1px solid rgba(11, 31, 58, 0.07);
+}
+
+
+/* ---------------------------------------------------------
+   DARK THEME
+   --------------------------------------------------------- */
+
+[data-theme="dark"]
+.nav-dropdown__menu--markets a span {
+    color: #EAF2F8;
+}
+
+
+[data-theme="dark"]
+.nav-dropdown__menu--markets a small {
+    color: #94A8BA;
+}
+
+
+[data-theme="dark"]
+.nav-dropdown__menu--markets a:hover {
+    background: rgba(108, 182, 234, 0.08);
+}
+
+
+[data-theme="dark"]
+.nav-dropdown__menu--markets a:hover span {
+    color: #6CB6EA;
+}
+
+
+[data-theme="dark"]
+.nav-dropdown__menu--markets a:first-child {
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE
+   --------------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+    .nav-dropdown__menu--markets {
+        width: 100%;
+    }
+
+}

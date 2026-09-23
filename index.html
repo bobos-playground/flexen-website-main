@@ -95,8 +95,8 @@
                     <li class="navbar_item"><a href="/" aria-current="page">Home</a></li>
                     <li class="navbar_item"><a href="./pages/about/">About</a></li>
                     <li class="navbar_item nav-dropdown">
+
                         <div class="nav-dropdown">
-                    
                             <button
                                     type="button"
                                     class="nav-dropdown__trigger"
@@ -104,14 +104,14 @@
                                     aria-haspopup="true"
                                     aria-controls="services-menu">
                                  <span>Services</span>
-                                 <span
-                                     class="nav-dropdown__icon"
-                                    aria-hidden="true">
-                                     ↓
-                                 </span>
+                                 <span class="nav-dropdown__icon" aria-hidden="true"></span>
                           </button>
 
-                             <div id="services-menu" class="nav-dropdown__menu" hidden>
+                             <div
+                                 id="services-menu"
+                                 class="nav-dropdown__menu"
+                                 hidden>
+
                     <div class="nav-dropdown__menu" hidden>
                         <a href="./pages/services/">All Services</a>
                         <a href="./pages/services/supplier-matching/">Supplier Matching</a>
@@ -132,8 +132,13 @@
                          aria-haspopup="true"
                          aria-controls="markets-menu">
                         Markets 
-                        <span aria-hidden="true">⌄</span>
+                        <span class="nav-dropdown__icon" aria-hidden="true"></span>
                     </button>
+
+                    <div
+                        id="markets-menu"
+                        class="nav-dropdown__menu"
+                        hidden>
 
                     <div class="nav-dropdown__menu" hidden>
                         <a href="./pages/markets/">All Markets</a>

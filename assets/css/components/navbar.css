@@ -1,0 +1,686 @@
+/* =========================================================
+   FLEXEN — NAVBAR
+   Corporate / Trade / Finance Navigation
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   1. HEADER
+   --------------------------------------------------------- */
+
+.site-header {
+    --navbar-height: 78px;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    width: 100%;
+    height: var(--navbar-height);
+
+    background: rgba(255, 255, 255, 0.94);
+    border-bottom: 1px solid rgba(11, 31, 58, 0.08);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    transition:
+        background-color 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+/* Header after scrolling */
+
+.site-header.is-scrolled {
+    background: rgba(255, 255, 255, 0.97);
+
+    box-shadow:
+        0 4px 20px rgba(7, 21, 41, 0.08);
+
+    border-bottom-color: rgba(11, 31, 58, 0.12);
+}
+
+
+/* ---------------------------------------------------------
+   2. NAVBAR
+   --------------------------------------------------------- */
+
+.navbar {
+    width: 100%;
+    min-height: var(--navbar-height);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 32px;
+}
+
+
+/* ---------------------------------------------------------
+   3. FLEXEN BRAND
+   --------------------------------------------------------- */
+
+.navbar__brand {
+    display: inline-flex;
+    align-items: center;
+
+    flex-shrink: 0;
+
+    text-decoration: none;
+
+    line-height: 0;
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.navbar__brand:hover {
+    opacity: 0.92;
+}
+
+
+.navbar__brand:focus-visible {
+    outline: 3px solid rgba(11, 95, 165, 0.35);
+    outline-offset: 5px;
+    border-radius: 6px;
+}
+
+
+/* Logo */
+
+.navbar__brand img {
+    display: block;
+
+    width: 150px;
+    height: 40px;
+
+    max-width: none;
+
+    object-fit: contain;
+}
+
+
+/* ---------------------------------------------------------
+   4. NAVIGATION LINKS
+   --------------------------------------------------------- */
+
+.navbar__menu {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    margin-left: auto;
+}
+
+
+.navbar__link {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 44px;
+    padding: 0 14px;
+
+    color: #0B1F3A;
+
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1;
+
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+
+.navbar__link:hover {
+    color: #0B5FA5;
+    background: rgba(11, 95, 165, 0.06);
+}
+
+
+.navbar__link:focus-visible {
+    outline: 3px solid rgba(11, 95, 165, 0.28);
+    outline-offset: 2px;
+}
+
+
+/* Active navigation item */
+
+.navbar__link[aria-current="page"] {
+    color: #0B5FA5;
+}
+
+
+/* Small active indicator */
+
+.navbar__link[aria-current="page"]::after {
+    content: "";
+
+    position: absolute;
+
+    left: 14px;
+    right: 14px;
+    bottom: 5px;
+
+    height: 2px;
+
+    background: #0B5FA5;
+
+    border-radius: 999px;
+}
+
+
+/* ---------------------------------------------------------
+   5. NAVIGATION DROPDOWN INDICATOR
+   --------------------------------------------------------- */
+
+.navbar__link--dropdown {
+    gap: 7px;
+}
+
+
+.navbar__link--dropdown::before {
+    content: "";
+
+    width: 6px;
+    height: 6px;
+
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+
+    transform: rotate(45deg) translateY(-2px);
+
+    order: 2;
+
+    transition: transform 0.2s ease;
+}
+
+
+.navbar__link--dropdown:hover::before {
+    transform: rotate(45deg) translateY(1px);
+}
+
+
+/* ---------------------------------------------------------
+   6. NAVBAR ACTIONS
+   --------------------------------------------------------- */
+
+.navbar__actions {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-left: 10px;
+}
+
+
+/* ---------------------------------------------------------
+   7. PRIMARY CTA
+   --------------------------------------------------------- */
+
+.navbar__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 44px;
+
+    padding: 0 20px;
+
+    color: #ffffff;
+
+    background: #0B5FA5;
+
+    border: 1px solid #0B5FA5;
+    border-radius: 8px;
+
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1;
+
+    text-decoration: none;
+
+    white-space: nowrap;
+
+    box-shadow:
+        0 4px 12px rgba(11, 95, 165, 0.18);
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.navbar__cta:hover {
+    color: #ffffff;
+
+    background: #084A82;
+    border-color: #084A82;
+
+    box-shadow:
+        0 6px 18px rgba(11, 95, 165, 0.25);
+
+    transform: translateY(-1px);
+}
+
+
+.navbar__cta:active {
+    transform: translateY(0);
+}
+
+
+.navbar__cta:focus-visible {
+    outline: 3px solid rgba(11, 95, 165, 0.3);
+    outline-offset: 3px;
+}
+
+
+/* ---------------------------------------------------------
+   8. SECONDARY CTA
+   --------------------------------------------------------- */
+
+.navbar__secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 44px;
+
+    padding: 0 16px;
+
+    color: #0B1F3A;
+
+    background: transparent;
+
+    border: 1px solid rgba(11, 31, 58, 0.16);
+    border-radius: 8px;
+
+    font-size: 0.9rem;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.navbar__secondary:hover {
+    color: #0B5FA5;
+
+    background: rgba(11, 95, 165, 0.05);
+
+    border-color: rgba(11, 95, 165, 0.3);
+}
+
+
+/* ---------------------------------------------------------
+   9. MOBILE MENU BUTTON
+   --------------------------------------------------------- */
+
+.navbar__toggle {
+    display: none;
+
+    width: 44px;
+    height: 44px;
+
+    padding: 0;
+
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+
+    border: 1px solid rgba(11, 31, 58, 0.12);
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+.navbar__toggle:hover {
+    background: rgba(11, 95, 165, 0.06);
+    border-color: rgba(11, 95, 165, 0.25);
+}
+
+
+.navbar__toggle:focus-visible {
+    outline: 3px solid rgba(11, 95, 165, 0.28);
+    outline-offset: 2px;
+}
+
+
+/* Hamburger */
+
+.navbar__toggle-icon,
+.navbar__toggle-icon::before,
+.navbar__toggle-icon::after {
+    display: block;
+
+    width: 20px;
+    height: 2px;
+
+    background: #0B1F3A;
+
+    border-radius: 999px;
+
+    transition:
+        transform 0.25s ease,
+        opacity 0.2s ease;
+}
+
+
+.navbar__toggle-icon {
+    position: relative;
+}
+
+
+.navbar__toggle-icon::before,
+.navbar__toggle-icon::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+}
+
+
+.navbar__toggle-icon::before {
+    top: -6px;
+}
+
+
+.navbar__toggle-icon::after {
+    top: 6px;
+}
+
+
+/* Open state */
+
+.navbar__toggle[aria-expanded="true"] .navbar__toggle-icon {
+    background: transparent;
+}
+
+
+.navbar__toggle[aria-expanded="true"] .navbar__toggle-icon::before {
+    transform: translateY(6px) rotate(45deg);
+}
+
+
+.navbar__toggle[aria-expanded="true"] .navbar__toggle-icon::after {
+    transform: translateY(-6px) rotate(-45deg);
+}
+
+
+/* ---------------------------------------------------------
+   10. DARK THEME
+   --------------------------------------------------------- */
+
+[data-theme="dark"] .site-header {
+    background: rgba(7, 21, 41, 0.92);
+
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+
+[data-theme="dark"] .site-header.is-scrolled {
+    background: rgba(7, 21, 41, 0.97);
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+
+[data-theme="dark"] .navbar__link {
+    color: #EAF2F8;
+}
+
+
+[data-theme="dark"] .navbar__link:hover {
+    color: #6CB6EA;
+
+    background: rgba(108, 182, 234, 0.08);
+}
+
+
+[data-theme="dark"] .navbar__link[aria-current="page"] {
+    color: #6CB6EA;
+}
+
+
+[data-theme="dark"] .navbar__link[aria-current="page"]::after {
+    background: #6CB6EA;
+}
+
+
+[data-theme="dark"] .navbar__secondary {
+    color: #EAF2F8;
+
+    border-color: rgba(255, 255, 255, 0.16);
+}
+
+
+[data-theme="dark"] .navbar__secondary:hover {
+    color: #6CB6EA;
+
+    background: rgba(108, 182, 234, 0.08);
+
+    border-color: rgba(108, 182, 234, 0.3);
+}
+
+
+[data-theme="dark"] .navbar__toggle {
+    border-color: rgba(255, 255, 255, 0.14);
+}
+
+
+[data-theme="dark"] .navbar__toggle:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+
+[data-theme="dark"] .navbar__toggle-icon,
+[data-theme="dark"] .navbar__toggle-icon::before,
+[data-theme="dark"] .navbar__toggle-icon::after {
+    background: #EAF2F8;
+}
+
+
+[data-theme="dark"] .navbar__toggle[aria-expanded="true"] .navbar__toggle-icon {
+    background: transparent;
+}
+
+
+/* ---------------------------------------------------------
+   11. RESPONSIVE — TABLET
+   --------------------------------------------------------- */
+
+@media (max-width: 1100px) {
+
+    .navbar {
+        gap: 20px;
+    }
+
+    .navbar__menu {
+        gap: 2px;
+    }
+
+    .navbar__link {
+        padding-left: 11px;
+        padding-right: 11px;
+
+        font-size: 0.9rem;
+    }
+
+    .navbar__cta {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   12. RESPONSIVE — MOBILE
+   --------------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+    .site-header {
+        --navbar-height: 72px;
+    }
+
+    .navbar {
+        position: relative;
+    }
+
+    .navbar__brand img {
+        width: 140px;
+        height: auto;
+    }
+
+    .navbar__toggle {
+        display: inline-flex;
+
+        margin-left: auto;
+    }
+
+    .navbar__menu,
+    .navbar__actions {
+        display: none;
+    }
+
+    /*
+     * When JavaScript adds .is-open,
+     * the navigation becomes a mobile panel.
+     */
+
+    .navbar.is-open {
+        flex-wrap: wrap;
+    }
+
+    .navbar.is-open .navbar__menu {
+        display: flex;
+
+        position: absolute;
+
+        top: calc(100% + 1px);
+        left: 0;
+        right: 0;
+
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 4px;
+
+        padding: 14px;
+
+        background: #ffffff;
+
+        border: 1px solid rgba(11, 31, 58, 0.08);
+        border-top: 0;
+
+        box-shadow:
+            0 15px 35px rgba(7, 21, 41, 0.12);
+
+        border-radius: 0 0 12px 12px;
+    }
+
+    .navbar.is-open .navbar__link {
+        width: 100%;
+
+        justify-content: space-between;
+
+        padding: 0 14px;
+
+        min-height: 48px;
+    }
+
+    .navbar.is-open .navbar__actions {
+        display: flex;
+
+        position: absolute;
+
+        top: calc(100% + 275px);
+        left: 14px;
+        right: 14px;
+
+        padding-bottom: 14px;
+    }
+
+    .navbar.is-open .navbar__cta {
+        width: 100%;
+    }
+
+
+    /* Dark mobile menu */
+
+    [data-theme="dark"] .navbar.is-open .navbar__menu {
+        background: #071529;
+
+        border-color: rgba(255, 255, 255, 0.08);
+
+        box-shadow:
+            0 15px 35px rgba(0, 0, 0, 0.35);
+    }
+}
+
+
+/* ---------------------------------------------------------
+   13. SMALL MOBILE
+   --------------------------------------------------------- */
+
+@media (max-width: 480px) {
+
+    .site-header {
+        --navbar-height: 68px;
+    }
+
+    .navbar__brand img {
+        width: 125px;
+    }
+
+    .navbar__toggle {
+        width: 42px;
+        height: 42px;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   14. REDUCED MOTION
+   --------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .site-header,
+    .navbar__brand,
+    .navbar__link,
+    .navbar__cta,
+    .navbar__secondary,
+    .navbar__toggle,
+    .navbar__toggle-icon,
+    .navbar__toggle-icon::before,
+    .navbar__toggle-icon::after {
+        transition: none;
+    }
+}

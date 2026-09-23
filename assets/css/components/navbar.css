@@ -1,50 +1,48 @@
 /* =========================================================
-   FLEXEN 2.0
-   PREMIUM NAVIGATION SYSTEM
-   Inspired by FLEXEN Navigation Bar Reference
+   FLEXEN NAVBAR
+   Modern • Clean • Responsive • Accessible
    ========================================================= */
 
 
 /* =========================================================
-   01. DESIGN TOKENS
+   1. NAVBAR VARIABLES
    ========================================================= */
 
 :root {
-    /* FLEXEN BRAND */
-    --flexen-navy: #0B1F3A;
-    --flexen-deep: #071529;
-    --flexen-blue: #0B5FA5;
-    --flexen-bright: #149BEE;
-    --flexen-light-blue: #6CB6EA;
+    --navbar-height: 76px;
+    --navbar-height-compact: 64px;
 
-    /* NEUTRALS */
-    --nav-white: #FFFFFF;
-    --nav-text: #0B1F3A;
-    --nav-muted: #64748B;
-    --nav-border: rgba(11, 31, 58, 0.10);
+    --navbar-bg: rgba(255, 255, 255, 0.96);
+    --navbar-bg-solid: #ffffff;
 
-    /* NAVBAR */
-    --navbar-height: 70px;
-    --navbar-radius: 10px;
+    --navbar-dark-bg: rgba(7, 21, 41, 0.96);
 
-    /* SHADOW */
+    --navbar-text: #071f5c;
+    --navbar-text-hover: #0797f5;
+
+    --navbar-primary: #0797f5;
+    --navbar-primary-dark: #0577c7;
+
+    --navbar-border: rgba(7, 31, 92, 0.08);
     --navbar-shadow:
-        0 8px 30px rgba(7, 21, 41, 0.07);
+        0 10px 30px rgba(7, 31, 92, 0.08);
 
-    --navbar-shadow-hover:
-        0 12px 36px rgba(7, 21, 41, 0.11);
+    --navbar-radius: 12px;
+
+    --navbar-transition:
+        180ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    --navbar-container-width: 1280px;
 }
 
 
 /* =========================================================
-   02. SITE HEADER
+   2. SITE HEADER
    ========================================================= */
 
 .site-header {
     position: sticky;
-
     top: 0;
-
     z-index: 1000;
 
     width: 100%;
@@ -53,184 +51,204 @@
 
     background: transparent;
 
-    border: 0;
-
     transition:
-        padding 0.25s ease,
-        background-color 0.25s ease,
-        box-shadow 0.25s ease;
+        padding var(--navbar-transition),
+        background-color var(--navbar-transition),
+        box-shadow var(--navbar-transition),
+        backdrop-filter var(--navbar-transition);
+}
+
+
+/*
+   When the page has been scrolled.
+
+   Add .is-scrolled to #site-header with JavaScript.
+*/
+
+.site-header.is-scrolled {
+    padding: 8px 0;
+
+    background: rgba(255, 255, 255, 0.88);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 8px 30px rgba(7, 31, 92, 0.08);
 }
 
 
 /* =========================================================
-   03. MAIN NAVBAR
+   3. CONTAINER
+   ========================================================= */
+
+.site-header > .container {
+    width: min(
+        calc(100% - 40px),
+        var(--navbar-container-width)
+    );
+
+    margin-inline: auto;
+}
+
+
+/* =========================================================
+   4. MAIN NAVBAR
    ========================================================= */
 
 .navbar {
     position: relative;
 
-    display: flex;
-
-    align-items: center;
-
-    width: 100%;
-
     min-height: var(--navbar-height);
 
-    padding: 0 18px;
+    display: flex;
+    align-items: center;
 
-    background: rgba(255, 255, 255, 0.96);
+    padding: 8px 14px 8px 22px;
 
-    border: 1px solid rgba(11, 31, 58, 0.06);
+    background: var(--navbar-bg);
+
+    border: 1px solid var(--navbar-border);
 
     border-radius: var(--navbar-radius);
 
     box-shadow: var(--navbar-shadow);
 
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
 
     transition:
-        min-height 0.25s ease,
-        padding 0.25s ease,
-        background-color 0.25s ease,
-        box-shadow 0.25s ease,
-        border-radius 0.25s ease;
+        min-height var(--navbar-transition),
+        padding var(--navbar-transition),
+        background-color var(--navbar-transition),
+        box-shadow var(--navbar-transition);
 }
 
 
-/* =========================================================
-   04. SCROLLED / COMPACT STATE
-   ========================================================= */
-
-.site-header.is-scrolled {
-    padding: 7px 0;
-}
-
+/* Compact navbar */
 
 .site-header.is-scrolled .navbar {
-    min-height: 62px;
+    min-height: var(--navbar-height-compact);
 
-    box-shadow:
-        0 6px 24px rgba(7, 21, 41, 0.10);
+    padding-top: 6px;
+    padding-bottom: 6px;
+
+    background: rgba(255, 255, 255, 0.97);
 }
 
 
 /* =========================================================
-   05. LOGO / BRAND
+   5. BRAND / LOGO
    ========================================================= */
 
 .navbar__brand {
-    display: inline-flex;
-
-    align-items: center;
-
     flex-shrink: 0;
 
-    line-height: 0;
+    display: inline-flex;
+    align-items: center;
 
     text-decoration: none;
 
-    transition:
-        opacity 0.2s ease,
-        transform 0.2s ease;
-}
+    line-height: 0;
 
-
-.navbar__brand:hover {
-    opacity: 0.94;
-}
-
-
-.navbar__brand:focus-visible {
-    outline: 3px solid rgba(20, 155, 238, 0.30);
-
-    outline-offset: 5px;
-
-    border-radius: 5px;
+    margin-right: auto;
 }
 
 
 .navbar__brand img {
     display: block;
 
-    width: 155px;
-
+    width: 150px;
     height: auto;
 
-    max-width: none;
+    max-height: 44px;
 
     object-fit: contain;
+
+    transition:
+        width var(--navbar-transition),
+        opacity var(--navbar-transition),
+        transform var(--navbar-transition);
+}
+
+
+/* Slightly smaller after scrolling */
+
+.site-header.is-scrolled .navbar__brand img {
+    width: 138px;
+}
+
+
+/* Hover */
+
+.navbar__brand:hover img {
+    transform: translateY(-1px);
 }
 
 
 /* =========================================================
-   06. DESKTOP NAVIGATION
+   6. DESKTOP NAVIGATION WRAPPER
    ========================================================= */
 
 .navbar__desktop {
     display: flex;
-
     align-items: center;
 
-    justify-content: center;
+    gap: 28px;
 
-    flex: 1;
-
-    min-width: 0;
-
-    margin-left: 28px;
+    margin-left: 42px;
 }
 
 
+/* =========================================================
+   7. NAVIGATION LIST
+   ========================================================= */
+
 .navbar_menu {
     display: flex;
-
     align-items: center;
 
-    justify-content: center;
-
-    gap: 2px;
+    gap: 4px;
 
     margin: 0;
-
     padding: 0;
 
     list-style: none;
 }
 
 
+/* =========================================================
+   8. NAVIGATION ITEMS
+   ========================================================= */
+
 .navbar_item {
     position: relative;
 
-    margin: 0;
-
-    padding: 0;
+    display: flex;
+    align-items: center;
 }
 
 
 /* =========================================================
-   07. STANDARD NAVIGATION LINKS
+   9. NORMAL NAV LINKS
    ========================================================= */
 
 .navbar_item > a {
     position: relative;
 
     display: inline-flex;
-
     align-items: center;
-
-    justify-content: center;
 
     min-height: 44px;
 
-    padding: 0 15px;
+    padding: 0 13px;
 
-    color: var(--nav-text);
+    color: var(--navbar-text);
 
-    font-family: inherit;
+    font-family:
+        inherit;
 
-    font-size: 0.91rem;
+    font-size: 15px;
 
     font-weight: 600;
 
@@ -240,150 +258,112 @@
 
     white-space: nowrap;
 
-    border-radius: 6px;
+    border-radius: 8px;
 
     transition:
-        color 0.2s ease,
-        background-color 0.2s ease;
+        color var(--navbar-transition),
+        background-color var(--navbar-transition);
 }
 
 
-/* Hover */
+/* Hover background */
 
 .navbar_item > a:hover {
-    color: var(--flexen-blue);
+    color: var(--navbar-text-hover);
 
-    background: rgba(11, 95, 165, 0.045);
+    background: rgba(7, 151, 245, 0.06);
 }
 
 
-/* Focus */
-
-.navbar_item > a:focus-visible {
-    outline: 3px solid rgba(20, 155, 238, 0.25);
-
-    outline-offset: 2px;
-}
-
-
-/* Active */
+/* =========================================================
+   10. ACTIVE PAGE
+   ========================================================= */
 
 .navbar_item > a[aria-current="page"] {
-    color: var(--flexen-blue);
+    color: var(--navbar-text);
 }
 
 
-/* Active line */
+/*
+   Blue active indicator
+*/
 
 .navbar_item > a[aria-current="page"]::after {
     content: "";
 
     position: absolute;
 
-    left: 15px;
-
-    right: 15px;
-
+    left: 13px;
+    right: 13px;
     bottom: 4px;
 
-    height: 2px;
+    height: 3px;
 
-    background: var(--flexen-bright);
+    background: var(--navbar-primary);
 
     border-radius: 999px;
 }
 
 
 /* =========================================================
-   08. DROPDOWN TRIGGER
+   11. DROPDOWN TRIGGER
    ========================================================= */
-
-.nav-dropdown {
-    position: relative;
-}
-
 
 .nav-dropdown__trigger {
     position: relative;
 
     display: inline-flex;
-
     align-items: center;
-
     justify-content: center;
 
     gap: 7px;
 
     min-height: 44px;
 
-    padding: 0 15px;
+    padding: 0 13px;
 
-    margin: 0;
-
-    color: var(--nav-text);
+    border: 0;
+    border-radius: 8px;
 
     background: transparent;
 
-    border: 0;
+    color: var(--navbar-text);
 
-    border-radius: 6px;
+    font: inherit;
 
-    font-family: inherit;
-
-    font-size: 0.91rem;
-
+    font-size: 15px;
     font-weight: 600;
-
-    line-height: 1;
 
     cursor: pointer;
 
     white-space: nowrap;
 
     transition:
-        color 0.2s ease,
-        background-color 0.2s ease;
+        color var(--navbar-transition),
+        background-color var(--navbar-transition);
 }
 
 
 .nav-dropdown__trigger:hover {
-    color: var(--flexen-blue);
+    color: var(--navbar-text-hover);
 
-    background: rgba(11, 95, 165, 0.045);
-}
-
-
-.nav-dropdown__trigger:focus-visible {
-    outline: 3px solid rgba(20, 155, 238, 0.25);
-
-    outline-offset: 2px;
-}
-
-
-/* Open */
-
-.nav-dropdown__trigger[aria-expanded="true"] {
-    color: var(--flexen-blue);
-
-    background: rgba(11, 95, 165, 0.045);
+    background: rgba(7, 151, 245, 0.06);
 }
 
 
 /* =========================================================
-   09. DROPDOWN ICON
+   12. DROPDOWN ARROW
    ========================================================= */
 
 .nav-dropdown__icon {
-    width: 11px;
-
-    height: 11px;
-
     flex-shrink: 0;
 
     transition:
-        transform 0.2s ease;
+        transform 180ms ease;
 }
 
+
+/* Open state */
 
 .nav-dropdown__trigger[aria-expanded="true"]
 .nav-dropdown__icon {
@@ -392,82 +372,76 @@
 
 
 /* =========================================================
-   10. DROPDOWN ACTIVE LINE
+   13. DROPDOWN MENU
    ========================================================= */
 
-.nav-dropdown__trigger[aria-expanded="true"]::after {
-    content: "";
-
-    position: absolute;
-
-    left: 15px;
-
-    right: 15px;
-
-    bottom: 4px;
-
-    height: 2px;
-
-    background: var(--flexen-bright);
-
-    border-radius: 999px;
+.nav-dropdown {
+    position: relative;
 }
 
 
-/* =========================================================
-   11. DROPDOWN MENU
-   ========================================================= */
+/*
+   Important:
+   Your JavaScript controls the hidden attribute.
+
+   This CSS handles the visual presentation.
+*/
 
 .nav-dropdown__menu {
     position: absolute;
 
-    top: calc(100% + 9px);
-
+    top: calc(100% + 12px);
     left: 50%;
 
-    width: 330px;
+    width: 260px;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%)
+        translateY(-6px);
 
-    padding: 7px;
+    padding: 9px;
 
     background: rgba(255, 255, 255, 0.98);
 
-    border: 1px solid rgba(11, 31, 58, 0.08);
+    border:
+        1px solid rgba(7, 31, 92, 0.08);
 
-    border-radius: 10px;
+    border-radius: 12px;
 
     box-shadow:
-        0 18px 45px rgba(7, 21, 41, 0.13),
-        0 4px 12px rgba(7, 21, 41, 0.05);
+        0 18px 50px rgba(7, 31, 92, 0.14);
 
-    backdrop-filter: blur(16px);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 
-    -webkit-backdrop-filter: blur(16px);
+    opacity: 0;
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 160ms ease,
+        transform 160ms ease,
+        visibility 160ms ease;
 
     z-index: 1100;
-
-    animation: flexenDropdownIn 0.16s ease-out;
 }
 
 
-@keyframes flexenDropdownIn {
+/*
+   JS can remove hidden.
+*/
 
-    from {
-        opacity: 0;
+.nav-dropdown__menu:not([hidden]) {
+    opacity: 1;
 
-        transform:
-            translateX(-50%)
-            translateY(-5px);
-    }
+    visibility: visible;
 
-    to {
-        opacity: 1;
+    pointer-events: auto;
 
-        transform:
-            translateX(-50%)
-            translateY(0);
-    }
+    transform:
+        translateX(-50%)
+        translateY(0);
 }
 
 
@@ -475,18 +449,15 @@
 
 .nav-dropdown__menu a {
     display: flex;
+    align-items: center;
 
-    flex-direction: column;
+    min-height: 42px;
 
-    gap: 3px;
+    padding: 10px 13px;
 
-    width: 100%;
+    color: #17366f;
 
-    padding: 12px 13px;
-
-    color: var(--nav-text);
-
-    font-size: 0.88rem;
+    font-size: 14px;
 
     font-weight: 600;
 
@@ -494,144 +465,79 @@
 
     text-decoration: none;
 
-    border-radius: 6px;
+    border-radius: 8px;
 
     transition:
-        color 0.18s ease,
-        background-color 0.18s ease;
+        color var(--navbar-transition),
+        background-color var(--navbar-transition),
+        padding-left var(--navbar-transition);
 }
 
 
 .nav-dropdown__menu a:hover {
-    color: var(--flexen-blue);
+    color: var(--navbar-primary);
 
-    background: rgba(11, 95, 165, 0.055);
-}
+    background: rgba(7, 151, 245, 0.07);
 
-
-.nav-dropdown__menu a span {
-    font-weight: 650;
-}
-
-
-.nav-dropdown__menu a small {
-    color: var(--nav-muted);
-
-    font-size: 0.75rem;
-
-    font-weight: 400;
+    padding-left: 17px;
 }
 
 
 /* =========================================================
-   12. MARKETS DROPDOWN
+   14. DROPDOWN TOP ACCENT
    ========================================================= */
 
-.nav-dropdown__menu--markets {
-    width: 290px;
-}
-
-
-/* =========================================================
-   13. NAVBAR ACTIONS
-   ========================================================= */
-
-.navbar__actions {
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-    flex-shrink: 0;
-
-    margin-left: 18px;
-}
-
-
-/* =========================================================
-   14. SEARCH BUTTON
-   ========================================================= */
-
-/*
-   If you add:
-
-   <button class="navbar__search">
-       SVG
-   </button>
-
-   this will match the reference image.
-*/
-
-.navbar__search {
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    width: 42px;
-
-    height: 42px;
-
-    padding: 0;
-
-    color: var(--flexen-navy);
-
-    background: transparent;
-
-    border: 0;
-
-    border-radius: 6px;
-
-    cursor: pointer;
-
-    transition:
-        color 0.2s ease,
-        background-color 0.2s ease;
-}
-
-
-.navbar__search:hover {
-    color: var(--flexen-blue);
-
-    background: rgba(11, 95, 165, 0.05);
-}
-
-
-/* Vertical separator */
-
-.navbar__search::after {
+.nav-dropdown__menu::before {
     content: "";
 
     position: absolute;
 
-    margin-left: 54px;
+    top: -5px;
+    left: 50%;
 
-    width: 1px;
+    width: 10px;
+    height: 10px;
 
-    height: 28px;
+    transform: translateX(-50%) rotate(45deg);
 
-    background: rgba(11, 31, 58, 0.14);
+    background: #ffffff;
+
+    border-left: 1px solid rgba(7, 31, 92, 0.08);
+    border-top: 1px solid rgba(7, 31, 92, 0.08);
 }
 
 
 /* =========================================================
-   15. GET A QUOTE
+   15. CTA AREA
+   ========================================================= */
+
+.navbar__actions {
+    display: flex;
+    align-items: center;
+
+    flex-shrink: 0;
+
+    padding-left: 8px;
+
+    border-left:
+        1px solid rgba(7, 31, 92, 0.10);
+}
+
+
+/* =========================================================
+   16. GET A QUOTE BUTTON
    ========================================================= */
 
 .navbar__actions .button--primary {
+    position: relative;
+
     display: inline-flex;
-
     align-items: center;
-
     justify-content: center;
 
-    gap: 14px;
-
-    min-width: 155px;
-
     min-height: 44px;
+
+    min-width: 142px;
 
     padding: 0 20px;
 
@@ -640,17 +546,15 @@
     background:
         linear-gradient(
             135deg,
-            #149BEE 0%,
-            #0B8FE3 100%
+            #0797f5 0%,
+            #087fe0 100%
         );
 
-    border: 1px solid rgba(20, 155, 238, 0.5);
+    border: 0;
 
-    border-radius: 6px;
+    border-radius: 8px;
 
-    font-family: inherit;
-
-    font-size: 0.87rem;
+    font-size: 14px;
 
     font-weight: 700;
 
@@ -658,81 +562,81 @@
 
     text-decoration: none;
 
-    white-space: nowrap;
+    overflow: hidden;
 
     box-shadow:
-        0 5px 15px rgba(11, 95, 165, 0.14);
+        0 7px 18px rgba(7, 151, 245, 0.20);
 
     transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        background 0.2s ease;
+        transform 180ms ease,
+        box-shadow 180ms ease,
+        background 180ms ease;
 }
 
 
+/* Hover */
+
 .navbar__actions .button--primary:hover {
-    color: #ffffff;
-
     transform: translateY(-1px);
-
-    box-shadow:
-        0 8px 20px rgba(11, 95, 165, 0.22);
 
     background:
         linear-gradient(
             135deg,
-            #20A5F5 0%,
-            #0B82D4 100%
+            #159ff5 0%,
+            #0577d0 100%
         );
+
+    box-shadow:
+        0 10px 24px rgba(7, 151, 245, 0.28);
 }
 
+
+/* Active */
 
 .navbar__actions .button--primary:active {
     transform: translateY(0);
-}
 
-
-.navbar__actions .button--primary:focus-visible {
-    outline: 3px solid rgba(20, 155, 238, 0.30);
-
-    outline-offset: 3px;
+    box-shadow:
+        0 4px 10px rgba(7, 151, 245, 0.18);
 }
 
 
 /* =========================================================
-   16. CTA ARROW
+   17. CTA SHINE EFFECT
    ========================================================= */
 
-/*
-   Automatically adds the arrow shown in your
-   reference image.
+.navbar__actions .button--primary::before {
+    content: "";
 
-   Your HTML can remain:
+    position: absolute;
 
-   Get a Quote
-*/
+    top: 0;
+    left: -120%;
 
-.navbar__actions .button--primary::after {
-    content: "→";
+    width: 70%;
+    height: 100%;
 
-    font-size: 1.15rem;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.20),
+            transparent
+        );
 
-    font-weight: 400;
+    transform: skewX(-20deg);
 
-    line-height: 1;
-
-    transition:
-        transform 0.2s ease;
+    transition: left 500ms ease;
 }
 
 
-.navbar__actions .button--primary:hover::after {
-    transform: translateX(3px);
+.navbar__actions .button--primary:hover::before {
+    left: 140%;
 }
 
 
 /* =========================================================
-   17. MOBILE MENU TOGGLE
+   18. MOBILE MENU BUTTON
    ========================================================= */
 
 .mobile-menu-toggle {
@@ -740,246 +644,210 @@
 
     position: relative;
 
-    align-items: center;
+    width: 44px;
+    height: 44px;
 
+    margin-left: 12px;
+
+    padding: 0;
+
+    border: 1px solid rgba(7, 31, 92, 0.10);
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    cursor: pointer;
+
+    align-items: center;
     justify-content: center;
 
     flex-direction: column;
 
-    width: 42px;
-
-    height: 42px;
-
-    margin-left: auto;
-
-    padding: 0;
-
-    background: transparent;
-
-    border: 1px solid rgba(11, 31, 58, 0.10);
-
-    border-radius: 6px;
-
-    cursor: pointer;
+    gap: 5px;
 
     transition:
-        background-color 0.2s ease,
-        border-color 0.2s ease;
+        background-color var(--navbar-transition),
+        border-color var(--navbar-transition);
 }
 
+
+.mobile-menu-toggle:hover {
+    background: rgba(7, 151, 245, 0.06);
+
+    border-color:
+        rgba(7, 151, 245, 0.25);
+}
+
+
+/* Hamburger lines */
 
 .mobile-menu-toggle span {
     display: block;
 
     width: 19px;
+    height: 2px;
 
-    height: 1.8px;
-
-    margin: 2.5px 0;
-
-    background: var(--flexen-navy);
+    background: var(--navbar-text);
 
     border-radius: 999px;
 
     transition:
-        transform 0.25s ease,
-        opacity 0.2s ease;
+        transform 180ms ease,
+        opacity 180ms ease;
 }
 
 
-.mobile-menu-toggle:hover {
-    background: rgba(11, 95, 165, 0.05);
+/* =========================================================
+   19. MOBILE BUTTON — OPEN STATE
+   ========================================================= */
 
-    border-color: rgba(11, 95, 165, 0.22);
-}
-
-
-/* Open state */
-
-.mobile-menu-toggle[aria-expanded="true"]
-span:nth-child(1) {
+.mobile-menu-toggle[aria-expanded="true"] span:nth-child(1) {
     transform:
-        translateY(6px)
+        translateY(7px)
         rotate(45deg);
 }
 
 
-.mobile-menu-toggle[aria-expanded="true"]
-span:nth-child(2) {
+.mobile-menu-toggle[aria-expanded="true"] span:nth-child(2) {
     opacity: 0;
 }
 
 
-.mobile-menu-toggle[aria-expanded="true"]
-span:nth-child(3) {
+.mobile-menu-toggle[aria-expanded="true"] span:nth-child(3) {
     transform:
-        translateY(-6px)
+        translateY(-7px)
         rotate(-45deg);
 }
 
 
 /* =========================================================
-   18. DARK NAVBAR
+   20. KEYBOARD ACCESSIBILITY
    ========================================================= */
 
-.site-header[data-theme="dark"] .navbar,
-[data-theme="dark"] .navbar {
-    background:
-        linear-gradient(
-            135deg,
-            #071F3C,
-            #092B52
-        );
+.navbar a:focus-visible,
+.navbar button:focus-visible {
+    outline: 3px solid rgba(7, 151, 245, 0.30);
 
-    border-color:
-        rgba(255, 255, 255, 0.08);
-
-    box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.18);
-}
-
-
-[data-theme="dark"] .navbar_item > a,
-[data-theme="dark"] .nav-dropdown__trigger {
-    color: #F4F8FC;
-}
-
-
-[data-theme="dark"] .navbar_item > a:hover,
-[data-theme="dark"] .nav-dropdown__trigger:hover {
-    color: #6CB6EA;
-
-    background:
-        rgba(108, 182, 234, 0.08);
-}
-
-
-[data-theme="dark"]
-.navbar_item > a[aria-current="page"] {
-    color: #6CB6EA;
-}
-
-
-[data-theme="dark"]
-.navbar_item > a[aria-current="page"]::after,
-[data-theme="dark"]
-.nav-dropdown__trigger[aria-expanded="true"]::after {
-    background: #149BEE;
-}
-
-
-[data-theme="dark"]
-.nav-dropdown__trigger[aria-expanded="true"] {
-    color: #6CB6EA;
-
-    background:
-        rgba(108, 182, 234, 0.08);
-}
-
-
-/* Dark dropdown */
-
-[data-theme="dark"] .nav-dropdown__menu {
-    background: #071D35;
-
-    border-color:
-        rgba(255, 255, 255, 0.09);
-
-    box-shadow:
-        0 20px 50px rgba(0, 0, 0, 0.35);
-}
-
-
-[data-theme="dark"] .nav-dropdown__menu a {
-    color: #F1F6FA;
-}
-
-
-[data-theme="dark"] .nav-dropdown__menu a small {
-    color: #94A8BA;
-}
-
-
-[data-theme="dark"] .nav-dropdown__menu a:hover {
-    color: #6CB6EA;
-
-    background:
-        rgba(108, 182, 234, 0.08);
+    outline-offset: 3px;
 }
 
 
 /* =========================================================
-   19. TRANSPARENT / HERO NAVBAR
+   21. DARK NAVBAR
    ========================================================= */
 
 /*
-   Apply:
+   Add .site-header--dark to the header:
 
-   <header
-       class="site-header site-header--transparent"
-   >
+   <header class="site-header site-header--dark">
+*/
 
-   when the navbar sits over a hero image.
+.site-header--dark .navbar {
+    background:
+        rgba(7, 31, 72, 0.96);
+
+    border-color:
+        rgba(255, 255, 255, 0.10);
+
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.18);
+}
+
+
+.site-header--dark .navbar_item > a,
+.site-header--dark .nav-dropdown__trigger {
+    color: rgba(255, 255, 255, 0.92);
+}
+
+
+.site-header--dark .navbar_item > a:hover,
+.site-header--dark .nav-dropdown__trigger:hover {
+    color: #ffffff;
+
+    background:
+        rgba(255, 255, 255, 0.08);
+}
+
+
+.site-header--dark .navbar__actions {
+    border-left-color:
+        rgba(255, 255, 255, 0.14);
+}
+
+
+.site-header--dark .mobile-menu-toggle {
+    background:
+        rgba(255, 255, 255, 0.06);
+
+    border-color:
+        rgba(255, 255, 255, 0.12);
+}
+
+
+.site-header--dark .mobile-menu-toggle span {
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   22. TRANSPARENT HERO NAVBAR
+   ========================================================= */
+
+/*
+   Use this when navbar sits directly over a hero image.
+
+   <header class="site-header site-header--transparent">
 */
 
 .site-header--transparent {
     position: absolute;
 
     top: 0;
-
     left: 0;
 
-    right: 0;
-
     padding-top: 20px;
-
-    background: transparent;
 }
 
 
 .site-header--transparent .navbar {
     background:
-        rgba(7, 21, 41, 0.28);
+        rgba(5, 22, 48, 0.30);
 
     border-color:
         rgba(255, 255, 255, 0.18);
 
     box-shadow:
-        0 8px 30px rgba(0, 0, 0, 0.12);
+        0 10px 30px rgba(0, 0, 0, 0.10);
 
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 
 .site-header--transparent .navbar_item > a,
 .site-header--transparent .nav-dropdown__trigger {
-    color: #FFFFFF;
+    color: #ffffff;
 }
 
 
 .site-header--transparent .navbar_item > a:hover,
 .site-header--transparent .nav-dropdown__trigger:hover {
-    color: #FFFFFF;
+    color: #ffffff;
 
     background:
-        rgba(255, 255, 255, 0.09);
+        rgba(255, 255, 255, 0.10);
 }
 
 
-.site-header--transparent
-.navbar_item > a[aria-current="page"] {
-    color: #FFFFFF;
-}
-
-
-.site-header--transparent
-.navbar_item > a[aria-current="page"]::after {
-    background: #FFFFFF;
+.site-header--transparent .navbar__actions {
+    border-left-color:
+        rgba(255, 255, 255, 0.20);
 }
 
 
 /* =========================================================
-   20. TRANSPARENT → SOLID ON SCROLL
+   23. TRANSPARENT → SOLID ON SCROLL
    ========================================================= */
 
 .site-header--transparent.is-scrolled {
@@ -993,13 +861,16 @@ span:nth-child(3) {
 
 .site-header--transparent.is-scrolled .navbar {
     background:
-        rgba(255, 255, 255, 0.97);
+        rgba(255, 255, 255, 0.96);
 
     border-color:
-        rgba(11, 31, 58, 0.07);
+        rgba(7, 31, 92, 0.08);
 
     box-shadow:
-        0 7px 25px rgba(7, 21, 41, 0.10);
+        0 10px 30px rgba(7, 31, 92, 0.10);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
 }
 
 
@@ -1007,366 +878,101 @@ span:nth-child(3) {
 .navbar_item > a,
 .site-header--transparent.is-scrolled
 .nav-dropdown__trigger {
-    color: var(--flexen-navy);
+    color: var(--navbar-text);
 }
 
 
 .site-header--transparent.is-scrolled
-.navbar_item > a:hover,
-.site-header--transparent.is-scrolled
-.nav-dropdown__trigger:hover {
-    color: var(--flexen-blue);
-
-    background:
-        rgba(11, 95, 165, 0.05);
+.navbar__actions {
+    border-left-color:
+        rgba(7, 31, 92, 0.10);
 }
 
 
 /* =========================================================
-   21. MOBILE NAVIGATION
+   24. RESPONSIVE — TABLET
    ========================================================= */
 
-.mobile-navigation {
-    position: fixed;
+@media (max-width: 1180px) {
 
-    top: calc(var(--navbar-height) + 28px);
+    .navbar__desktop {
+        gap: 16px;
 
-    left: 0;
-
-    right: 0;
-
-    z-index: 999;
-
-    width: 100%;
-
-    max-height:
-        calc(100vh - var(--navbar-height) - 28px);
-
-    overflow-y: auto;
-
-    background:
-        rgba(255, 255, 255, 0.98);
-
-    border-top:
-        1px solid rgba(11, 31, 58, 0.06);
-
-    box-shadow:
-        0 15px 40px rgba(7, 21, 41, 0.14);
-
-    backdrop-filter: blur(16px);
-
-    -webkit-backdrop-filter: blur(16px);
-
-    animation:
-        flexenMobileMenuIn 0.2s ease-out;
-}
-
-
-@keyframes flexenMobileMenuIn {
-
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(-7px);
+        margin-left: 24px;
     }
 
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0);
-    }
-}
-
-
-/* =========================================================
-   22. MOBILE NAVIGATION LIST
-   ========================================================= */
-
-.mobile-navigation__nav {
-    display: flex;
-
-    flex-direction: column;
-
-    padding: 8px 0 20px;
-}
-
-
-.mobile-navigation__list {
-    display: flex;
-
-    flex-direction: column;
-
-    margin: 0;
-
-    padding: 0;
-
-    list-style: none;
-}
-
-
-.mobile-navigation__item {
-    border-bottom:
-        1px solid rgba(11, 31, 58, 0.06);
-}
-
-
-.mobile-navigation__item > a {
-    display: flex;
-
-    align-items: center;
-
-    min-height: 52px;
-
-    padding: 0;
-
-    color: var(--flexen-navy);
-
-    font-size: 0.96rem;
-
-    font-weight: 600;
-
-    text-decoration: none;
-
-    transition:
-        color 0.2s ease,
-        background-color 0.2s ease;
-}
-
-
-.mobile-navigation__item > a:hover {
-    color: var(--flexen-blue);
-
-    background:
-        rgba(11, 95, 165, 0.04);
-}
-
-
-.mobile-navigation__item > a[aria-current="page"] {
-    color: var(--flexen-blue);
-
-    font-weight: 700;
-}
-
-
-/* =========================================================
-   23. MOBILE DROPDOWNS
-   ========================================================= */
-
-.mobile-dropdown__trigger {
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    width: 100%;
-
-    min-height: 52px;
-
-    padding: 0;
-
-    color: var(--flexen-navy);
-
-    background: transparent;
-
-    border: 0;
-
-    font-family: inherit;
-
-    font-size: 0.96rem;
-
-    font-weight: 600;
-
-    cursor: pointer;
-}
-
-
-.mobile-dropdown__trigger:hover {
-    color: var(--flexen-blue);
-}
-
-
-.mobile-dropdown__icon {
-    width: 12px;
-
-    height: 12px;
-
-    transition:
-        transform 0.2s ease;
-}
-
-
-.mobile-dropdown__trigger[aria-expanded="true"]
-.mobile-dropdown__icon {
-    transform: rotate(180deg);
-}
-
-
-.mobile-dropdown__trigger[aria-expanded="true"] {
-    color: var(--flexen-blue);
-}
-
-
-/* Mobile dropdown */
-
-.mobile-dropdown__menu {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 2px;
-
-    margin-bottom: 8px;
-
-    padding:
-        5px 0
-        5px 14px;
-
-    background:
-        rgba(11, 95, 165, 0.035);
-
-    border-left:
-        2px solid rgba(11, 95, 165, 0.16);
-
-    border-radius:
-        0 6px 6px 0;
-}
-
-
-.mobile-dropdown__menu a {
-    display: flex;
-
-    align-items: center;
-
-    min-height: 43px;
-
-    padding: 0 12px;
-
-    color: #536A80;
-
-    font-size: 0.87rem;
-
-    font-weight: 500;
-
-    text-decoration: none;
-
-    border-radius: 5px;
-}
-
-
-.mobile-dropdown__menu a:hover {
-    color: var(--flexen-blue);
-
-    background:
-        rgba(11, 95, 165, 0.05);
-}
-
-
-/* =========================================================
-   24. MOBILE CTA
-   ========================================================= */
-
-.mobile-navigation__actions {
-    width: 100%;
-
-    padding-top: 18px;
-}
-
-
-.mobile-navigation__actions .button--primary {
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    width: 100%;
-
-    min-height: 48px;
-
-    color: #FFFFFF;
-
-    background:
-        linear-gradient(
-            135deg,
-            #149BEE,
-            #0B8FE3
-        );
-
-    border-radius: 6px;
-
-    font-size: 0.9rem;
-
-    font-weight: 700;
-
-    text-decoration: none;
-
-    box-shadow:
-        0 5px 15px rgba(11, 95, 165, 0.15);
-}
-
-
-/* =========================================================
-   25. MOBILE BREAKPOINT
-   ========================================================= */
-
-@media (max-width: 900px) {
-
-    .site-header {
-        --navbar-height: 64px;
-
-        padding: 10px 0;
+    .navbar_menu {
+        gap: 0;
     }
 
+    .navbar_item > a,
+    .nav-dropdown__trigger {
+        padding-inline: 9px;
 
-    .navbar {
-        min-height: var(--navbar-height);
-
-        padding: 0 14px;
-
-        border-radius: 9px;
+        font-size: 14px;
     }
 
+    .navbar__actions .button--primary {
+        min-width: 125px;
+
+        padding-inline: 16px;
+    }
 
     .navbar__brand img {
         width: 140px;
     }
+}
 
+
+/* =========================================================
+   25. RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 960px) {
+
+    .site-header {
+        padding: 10px 0;
+    }
+
+    .site-header > .container {
+        width: min(
+            calc(100% - 28px),
+            var(--navbar-container-width)
+        );
+    }
+
+    .navbar {
+        min-height: 66px;
+
+        padding:
+            7px 9px 7px 16px;
+    }
+
+
+    /* Hide desktop nav */
 
     .navbar__desktop {
         display: none;
     }
 
 
-    .navbar__actions {
-        display: none;
-    }
-
+    /* Show mobile toggle */
 
     .mobile-menu-toggle {
-        display: inline-flex;
+        display: flex;
     }
 
 
-    .site-header.is-scrolled {
-        padding: 6px 0;
+    /* Logo */
+
+    .navbar__brand img {
+        width: 140px;
     }
 
 
-    .site-header.is-scrolled .navbar {
-        min-height: 58px;
+    .site-header.is-scrolled .navbar__brand img {
+        width: 130px;
     }
-
-
-    .mobile-navigation {
-        top: calc(var(--navbar-height) + 20px);
-
-        max-height:
-            calc(100vh - var(--navbar-height) - 20px);
-    }
-
 }
 
 
@@ -1376,100 +982,42 @@ span:nth-child(3) {
 
 @media (max-width: 480px) {
 
-    .site-header {
-        --navbar-height: 60px;
+    .site-header > .container {
+        width: calc(100% - 20px);
     }
-
 
     .navbar {
-        padding: 0 12px;
-    }
+        min-height: 62px;
 
+        border-radius: 10px;
+
+        padding-left: 13px;
+        padding-right: 7px;
+    }
 
     .navbar__brand img {
-        width: 125px;
+        width: 130px;
     }
-
 
     .mobile-menu-toggle {
-        width: 40px;
+        width: 42px;
+        height: 42px;
 
-        height: 40px;
-    }
-
-}
-
-
-/* =========================================================
-   27. TABLET DESKTOP ADJUSTMENT
-   ========================================================= */
-
-@media (min-width: 901px) and (max-width: 1150px) {
-
-    .navbar__desktop {
-        margin-left: 12px;
-    }
-
-
-    .navbar_item > a,
-    .nav-dropdown__trigger {
-        padding-left: 10px;
-
-        padding-right: 10px;
-
-        font-size: 0.86rem;
-    }
-
-
-    .navbar__brand img {
-        width: 140px;
-    }
-
-
-    .navbar__actions {
         margin-left: 8px;
     }
-
-
-    .navbar__actions .button--primary {
-        min-width: 135px;
-
-        padding: 0 14px;
-    }
-
 }
 
 
 /* =========================================================
-   28. HIDDEN ATTRIBUTE
-   ========================================================= */
-
-[hidden] {
-    display: none !important;
-}
-
-
-/* =========================================================
-   29. REDUCED MOTION
+   27. REDUCED MOTION
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
     .site-header,
     .navbar,
-    .navbar__brand,
-    .navbar_item > a,
-    .nav-dropdown__trigger,
-    .nav-dropdown__icon,
-    .nav-dropdown__menu,
-    .navbar__actions .button--primary,
-    .mobile-menu-toggle,
-    .mobile-menu-toggle span,
-    .mobile-navigation,
-    .mobile-dropdown__icon {
-        animation: none;
-
-        transition: none;
+    .navbar *,
+    .mobile-menu-toggle span {
+        transition: none !important;
     }
-
 }

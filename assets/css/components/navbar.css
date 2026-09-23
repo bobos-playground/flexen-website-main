@@ -1021,3 +1021,884 @@
         transition: none !important;
     }
 }
+
+/* =========================================================
+   FLEXEN MOBILE NAVIGATION
+   Clean • Spacious • Responsive • Accessible
+   ========================================================= */
+
+
+/* =========================================================
+   1. MOBILE NAVIGATION VARIABLES
+   ========================================================= */
+
+:root {
+    --mobile-nav-bg: #ffffff;
+    --mobile-nav-text: #071f5c;
+    --mobile-nav-muted: #60708f;
+
+    --mobile-nav-border:
+        rgba(7, 31, 92, 0.09);
+
+    --mobile-nav-primary: #0797f5;
+    --mobile-nav-primary-dark: #0577c7;
+
+    --mobile-nav-overlay:
+        rgba(3, 15, 32, 0.48);
+
+    --mobile-nav-radius: 14px;
+
+    --mobile-nav-transition:
+        220ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+/* =========================================================
+   2. MAIN MOBILE NAVIGATION
+   ========================================================= */
+
+.mobile-navigation {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100dvh;
+
+    z-index: 2000;
+
+    background:
+        rgba(255, 255, 255, 0.98);
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    -webkit-overflow-scrolling: touch;
+
+    overscroll-behavior: contain;
+
+    animation:
+        mobileNavOpen 220ms ease both;
+}
+
+
+/*
+   Respect the HTML hidden attribute.
+*/
+
+.mobile-navigation[hidden] {
+    display: none;
+}
+
+
+/* =========================================================
+   3. OPEN ANIMATION
+   ========================================================= */
+
+@keyframes mobileNavOpen {
+
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   4. MOBILE NAV CONTAINER
+   ========================================================= */
+
+.mobile-navigation > .container {
+    width: min(
+        calc(100% - 28px),
+        720px
+    );
+
+    min-height: 100%;
+
+    margin-inline: auto;
+}
+
+
+/* =========================================================
+   5. MOBILE NAV HEADER
+   ========================================================= */
+
+/*
+   If your mobile navigation contains a header:
+
+   .mobile-navigation__header
+
+   use this structure.
+*/
+
+.mobile-navigation__header {
+    position: sticky;
+
+    top: 0;
+
+    z-index: 5;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 72px;
+
+    background:
+        rgba(255, 255, 255, 0.96);
+
+    border-bottom:
+        1px solid var(--mobile-nav-border);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+
+/* =========================================================
+   6. MOBILE BRAND
+   ========================================================= */
+
+.mobile-navigation__brand {
+    display: inline-flex;
+    align-items: center;
+
+    line-height: 0;
+
+    text-decoration: none;
+}
+
+
+.mobile-navigation__brand img {
+    display: block;
+
+    width: 138px;
+    height: auto;
+
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   7. CLOSE BUTTON
+   ========================================================= */
+
+.mobile-navigation__close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    padding: 0;
+
+    border:
+        1px solid var(--mobile-nav-border);
+
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    color: var(--mobile-nav-text);
+
+    cursor: pointer;
+
+    transition:
+        background-color var(--mobile-nav-transition),
+        border-color var(--mobile-nav-transition),
+        color var(--mobile-nav-transition),
+        transform var(--mobile-nav-transition);
+}
+
+
+.mobile-navigation__close:hover {
+    color: var(--mobile-nav-primary);
+
+    background:
+        rgba(7, 151, 245, 0.06);
+
+    border-color:
+        rgba(7, 151, 245, 0.20);
+}
+
+
+.mobile-navigation__close:active {
+    transform: scale(0.96);
+}
+
+
+/* =========================================================
+   8. CLOSE ICON
+   ========================================================= */
+
+.mobile-navigation__close svg {
+    width: 19px;
+    height: 19px;
+}
+
+
+/* =========================================================
+   9. MOBILE NAVIGATION NAV
+   ========================================================= */
+
+.mobile-navigation__nav {
+    padding:
+        22px 0 30px;
+}
+
+
+/* =========================================================
+   10. MOBILE NAV LIST
+   ========================================================= */
+
+.mobile-navigation__list,
+.mobile-navigation_list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+
+/* =========================================================
+   11. NAVIGATION ITEMS
+   ========================================================= */
+
+.mobile-navigation__item {
+    position: relative;
+
+    margin: 0;
+}
+
+
+/* =========================================================
+   12. NORMAL MOBILE LINKS
+   ========================================================= */
+
+.mobile-navigation__item > a {
+    display: flex;
+    align-items: center;
+
+    min-height: 52px;
+
+    padding:
+        0 14px;
+
+    color: var(--mobile-nav-text);
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    line-height: 1.4;
+
+    text-decoration: none;
+
+    border-radius: 9px;
+
+    transition:
+        color var(--mobile-nav-transition),
+        background-color var(--mobile-nav-transition),
+        padding-left var(--mobile-nav-transition);
+}
+
+
+/* Hover / touch */
+
+.mobile-navigation__item > a:hover {
+    color: var(--mobile-nav-primary);
+
+    background:
+        rgba(7, 151, 245, 0.06);
+
+    padding-left: 18px;
+}
+
+
+/* =========================================================
+   13. ACTIVE MOBILE LINK
+   ========================================================= */
+
+.mobile-navigation__item > a[aria-current="page"] {
+    color: var(--mobile-nav-primary);
+
+    background:
+        rgba(7, 151, 245, 0.07);
+
+    font-weight: 700;
+}
+
+
+/*
+   Small blue indicator
+*/
+
+.mobile-navigation__item > a[aria-current="page"]::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    width: 3px;
+    height: 24px;
+
+    background:
+        var(--mobile-nav-primary);
+
+    border-radius: 0 999px 999px 0;
+}
+
+
+/* =========================================================
+   14. MOBILE DROPDOWN
+   ========================================================= */
+
+.mobile-navigation .nav-dropdown {
+    display: block;
+
+    width: 100%;
+}
+
+
+/* Dropdown trigger */
+
+.mobile-navigation .nav-dropdown__trigger {
+    width: 100%;
+
+    min-height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding:
+        0 14px;
+
+    border: 0;
+
+    border-radius: 9px;
+
+    background: transparent;
+
+    color: var(--mobile-nav-text);
+
+    font-family: inherit;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        color var(--mobile-nav-transition),
+        background-color var(--mobile-nav-transition);
+}
+
+
+.mobile-navigation .nav-dropdown__trigger:hover {
+    color: var(--mobile-nav-primary);
+
+    background:
+        rgba(7, 151, 245, 0.06);
+}
+
+
+/* =========================================================
+   15. DROPDOWN ARROW
+   ========================================================= */
+
+.mobile-navigation .nav-dropdown__icon {
+    width: 14px;
+    height: 14px;
+
+    transition:
+        transform 200ms ease;
+}
+
+
+.mobile-navigation
+.nav-dropdown__trigger[aria-expanded="true"]
+.nav-dropdown__icon {
+    transform: rotate(180deg);
+}
+
+
+/* =========================================================
+   16. MOBILE DROPDOWN CONTENT
+   ========================================================= */
+
+.mobile-navigation .nav-dropdown__menu {
+    position: static;
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+
+    margin:
+        2px 0 8px;
+
+    padding:
+        5px 0 5px 15px;
+
+    background:
+        rgba(7, 151, 245, 0.035);
+
+    border: 0;
+
+    border-left:
+        1px solid rgba(7, 151, 245, 0.18);
+
+    border-radius: 0;
+
+    box-shadow: none;
+
+    transform: none;
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+
+/*
+   Hidden dropdown.
+*/
+
+.mobile-navigation
+.nav-dropdown__menu[hidden] {
+    display: none;
+}
+
+
+/* Remove desktop dropdown arrow */
+
+.mobile-navigation
+.nav-dropdown__menu::before {
+    display: none;
+}
+
+
+/* =========================================================
+   17. MOBILE DROPDOWN LINKS
+   ========================================================= */
+
+.mobile-navigation
+.nav-dropdown__menu a {
+    display: flex;
+    align-items: center;
+
+    min-height: 44px;
+
+    padding:
+        8px 14px;
+
+    color: var(--mobile-nav-muted);
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    line-height: 1.4;
+
+    text-decoration: none;
+
+    border-radius: 7px;
+
+    transition:
+        color var(--mobile-nav-transition),
+        background-color var(--mobile-nav-transition),
+        padding-left var(--mobile-nav-transition);
+}
+
+
+.mobile-navigation
+.nav-dropdown__menu a:hover {
+    color: var(--mobile-nav-primary);
+
+    background:
+        rgba(7, 151, 245, 0.07);
+
+    padding-left: 18px;
+}
+
+
+/* =========================================================
+   18. MOBILE CTA SECTION
+   ========================================================= */
+
+.mobile-navigation__actions {
+    margin-top: 24px;
+
+    padding-top: 20px;
+
+    border-top:
+        1px solid var(--mobile-nav-border);
+}
+
+
+/* =========================================================
+   19. MOBILE GET A QUOTE BUTTON
+   ========================================================= */
+
+.mobile-navigation__actions .button--primary,
+.mobile-navigation .button--primary {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding:
+        0 20px;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0797f5 0%,
+            #087fe0 100%
+        );
+
+    border: 0;
+
+    border-radius: 9px;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    text-decoration: none;
+
+    box-shadow:
+        0 8px 20px rgba(7, 151, 245, 0.20);
+
+    overflow: hidden;
+
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease;
+}
+
+
+.mobile-navigation__actions
+.button--primary:hover,
+.mobile-navigation
+.button--primary:hover {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 12px 26px rgba(7, 151, 245, 0.28);
+}
+
+
+/* =========================================================
+   20. MOBILE NAV DIVIDER
+   ========================================================= */
+
+.mobile-navigation__divider {
+    width: 100%;
+    height: 1px;
+
+    margin:
+        8px 0;
+
+    background:
+        var(--mobile-nav-border);
+}
+
+
+/* =========================================================
+   21. SUPPORTING LINKS
+   ========================================================= */
+
+.mobile-navigation__secondary {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 8px;
+
+    margin-top: 20px;
+}
+
+
+.mobile-navigation__secondary a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 42px;
+
+    padding: 8px;
+
+    color: var(--mobile-nav-muted);
+
+    background:
+        #f7f9fc;
+
+    border:
+        1px solid var(--mobile-nav-border);
+
+    border-radius: 8px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition:
+        color var(--mobile-nav-transition),
+        background-color var(--mobile-nav-transition),
+        border-color var(--mobile-nav-transition);
+}
+
+
+.mobile-navigation__secondary a:hover {
+    color: var(--mobile-nav-primary);
+
+    background:
+        rgba(7, 151, 245, 0.05);
+
+    border-color:
+        rgba(7, 151, 245, 0.18);
+}
+
+
+/* =========================================================
+   22. MOBILE NAV FOOTER
+   ========================================================= */
+
+.mobile-navigation__footer {
+    padding:
+        18px 0 28px;
+
+    color:
+        var(--mobile-nav-muted);
+
+    font-size: 12px;
+
+    line-height: 1.6;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   23. DARK MOBILE NAVIGATION
+   ========================================================= */
+
+.site-header--dark
+~ .mobile-navigation,
+.mobile-navigation.mobile-navigation--dark {
+    background:
+        #071529;
+}
+
+
+.mobile-navigation--dark .mobile-navigation__header {
+    background:
+        rgba(7, 21, 41, 0.96);
+
+    border-color:
+        rgba(255, 255, 255, 0.10);
+}
+
+
+.mobile-navigation--dark
+.mobile-navigation__item > a,
+.mobile-navigation--dark
+.nav-dropdown__trigger {
+    color:
+        rgba(255, 255, 255, 0.94);
+}
+
+
+.mobile-navigation--dark
+.mobile-navigation__item > a:hover,
+.mobile-navigation--dark
+.nav-dropdown__trigger:hover {
+    color: #ffffff;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+}
+
+
+.mobile-navigation--dark
+.nav-dropdown__menu {
+    background:
+        rgba(255, 255, 255, 0.035);
+
+    border-left-color:
+        rgba(7, 151, 245, 0.35);
+}
+
+
+.mobile-navigation--dark
+.nav-dropdown__menu a {
+    color:
+        rgba(255, 255, 255, 0.62);
+}
+
+
+.mobile-navigation--dark
+.nav-dropdown__menu a:hover {
+    color: #ffffff;
+
+    background:
+        rgba(255, 255, 255, 0.06);
+}
+
+
+.mobile-navigation--dark
+.mobile-navigation__close {
+    color: #ffffff;
+
+    background:
+        rgba(255, 255, 255, 0.06);
+
+    border-color:
+        rgba(255, 255, 255, 0.12);
+}
+
+
+/* =========================================================
+   24. MOBILE BREAKPOINT
+   ========================================================= */
+
+@media (min-width: 961px) {
+
+    /*
+       Mobile navigation should never appear
+       on desktop.
+    */
+
+    .mobile-navigation {
+        display: none !important;
+    }
+}
+
+
+/* =========================================================
+   25. TABLET
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .mobile-navigation > .container {
+        width: calc(100% - 24px);
+    }
+
+    .mobile-navigation__header {
+        min-height: 68px;
+    }
+
+    .mobile-navigation__brand img {
+        width: 132px;
+    }
+
+    .mobile-navigation__nav {
+        padding-top: 18px;
+    }
+
+    .mobile-navigation__item > a,
+    .mobile-navigation .nav-dropdown__trigger {
+        min-height: 50px;
+
+        font-size: 15px;
+    }
+}
+
+
+/* =========================================================
+   26. SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .mobile-navigation > .container {
+        width: calc(100% - 20px);
+    }
+
+    .mobile-navigation__brand img {
+        width: 125px;
+    }
+
+    .mobile-navigation__close {
+        width: 40px;
+        height: 40px;
+    }
+
+    .mobile-navigation__item > a,
+    .mobile-navigation .nav-dropdown__trigger {
+        min-height: 48px;
+
+        font-size: 15px;
+    }
+
+    .mobile-navigation__actions {
+        margin-top: 18px;
+    }
+}
+
+
+/* =========================================================
+   27. ACCESSIBILITY
+   ========================================================= */
+
+.mobile-navigation a:focus-visible,
+.mobile-navigation button:focus-visible {
+    outline:
+        3px solid rgba(7, 151, 245, 0.30);
+
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   28. REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .mobile-navigation,
+    .mobile-navigation *,
+    .mobile-navigation::before {
+        animation: none !important;
+        transition: none !important;
+    }
+}

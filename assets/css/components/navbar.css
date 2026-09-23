@@ -684,3 +684,183 @@
         transition: none;
     }
 }
+
+/* =========================================================
+   FLEXEN — DESKTOP NAVIGATION
+   ========================================================= */
+
+.navbar__desktop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 1;
+}
+
+
+/* ---------------------------------------------------------
+   NAVIGATION LIST
+   --------------------------------------------------------- */
+
+.navbar_menu {
+    display: flex;
+    align-items: center;
+
+    gap: 4px;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+
+/* ---------------------------------------------------------
+   NAVIGATION ITEM
+   --------------------------------------------------------- */
+
+.navbar_item {
+    position: relative;
+
+    margin: 0;
+    padding: 0;
+}
+
+
+/* ---------------------------------------------------------
+   NAVIGATION LINK
+   --------------------------------------------------------- */
+
+.navbar_item > a {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 46px;
+
+    padding: 0 15px;
+
+    color: #0B1F3A;
+
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1;
+
+    text-decoration: none;
+
+    border-radius: 7px;
+
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+
+/* ---------------------------------------------------------
+   HOVER
+   --------------------------------------------------------- */
+
+.navbar_item > a:hover {
+    color: #0B5FA5;
+
+    background: rgba(11, 95, 165, 0.06);
+}
+
+
+/* ---------------------------------------------------------
+   ACTIVE PAGE
+   --------------------------------------------------------- */
+
+.navbar_item > a[aria-current="page"] {
+    color: #0B5FA5;
+}
+
+
+/* Active underline */
+
+.navbar_item > a[aria-current="page"]::after {
+    content: "";
+
+    position: absolute;
+
+    left: 15px;
+    right: 15px;
+    bottom: 5px;
+
+    height: 2px;
+
+    background: #0B5FA5;
+
+    border-radius: 999px;
+}
+
+
+/* ---------------------------------------------------------
+   FOCUS ACCESSIBILITY
+   --------------------------------------------------------- */
+
+.navbar_item > a:focus-visible {
+    outline: 3px solid rgba(11, 95, 165, 0.25);
+    outline-offset: 3px;
+}
+
+
+/* ---------------------------------------------------------
+   DARK THEME
+   --------------------------------------------------------- */
+
+[data-theme="dark"] .navbar_item > a {
+    color: #EAF2F8;
+}
+
+
+[data-theme="dark"] .navbar_item > a:hover {
+    color: #6CB6EA;
+
+    background: rgba(108, 182, 234, 0.08);
+}
+
+
+[data-theme="dark"] .navbar_item > a[aria-current="page"] {
+    color: #6CB6EA;
+}
+
+
+[data-theme="dark"] .navbar_item > a[aria-current="page"]::after {
+    background: #6CB6EA;
+}
+
+
+/* ---------------------------------------------------------
+   TABLET
+   --------------------------------------------------------- */
+
+@media (max-width: 1100px) {
+
+    .navbar_menu {
+        gap: 2px;
+    }
+
+    .navbar_item > a {
+        padding-left: 11px;
+        padding-right: 11px;
+
+        font-size: 0.9rem;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE
+   --------------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+    .navbar__desktop {
+        display: none;
+    }
+
+}

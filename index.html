@@ -213,17 +213,130 @@
 
     <div id="mobile-navigation" class="mobile-navigation" hidden>
         <div class="container">
-            <nav aria-label="Mobile navigation">
-                <a href="/" aria-current="page">Home</a>
-                <a href="./pages/about/" aria-current="page">About</a>
-                <a href="./pages/services/" aria-current="page">Services</a>
-                <a href="./pages/markets/" aria-current="page">Markets</a>
-                <a href="./pages/how-it-works/" aria-current="page">How It Works</a>
-                <a href="./pages/suppliers/" aria-current="page">Suppliers</a>
-                <a href="./pages/products/" aria-current="page">Products</a>
-                <a href="./blog/" aria-current="page">Resources</a>
-                <a href="./pages/get-a-quote/" class="button button--primary">Get a Quote</a>
-                <a href="./pages/contact/" aria-current="page">Contact</a>
+            <nav  class="mobile-navigation__nav" aria-label="Mobile navigation">
+                <ul class="mobile-navigation_list">
+                    <li class="mobile-navigation__item"><a href="/" aria-current="page">Home</a></li>
+                    <li class="mobile-navigation__item"><a href="./pages/about/">About</a></li>
+
+                <li class="mobile-navigation__item mobile-dropdown">
+                    <button
+                        type="button"
+                        class="mobile-dropdown__trigger"
+                        aria-expanded="false"
+                        aria-controls="mobile-services-menu">
+                        <span>Services</span>
+
+                        <svg
+                            class="mobile-dropdown__icon"
+                            aria-hidden="true"
+                            viewBox="0 0 12 12"
+                            width="12"
+                            height="12">
+                            <path
+                                d="M2 4.5L6 8L10 4.5"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+
+                    <div id="mobile-services-menu" class="mobile-dropdown_menu" hidden>
+                        <a href="./pages/services/">
+                            All Services
+                        </a>
+
+                        <a href="./pages/services/supplier-matching/">
+                            Supplier Matching
+                        </a>
+
+                        <a href="./pages/services/price-negotiation/">
+                            Price Negotiation
+                        </a>
+
+                        <a href="./pages/services/payment-facilitation/">
+                            Payment Facilitation
+                        </a>
+
+                        <a href="./pages/services/shipping-logistics/">
+                            Shipping &amp; Logistics
+                        </a>
+
+                        <a href="./pages/services/port-clearing/">
+                            Port Clearing
+                        </a>
+                    </div>
+
+                </li>
+                    <li class="mobile-navigation__item mobile-dropdown">
+
+                        <button
+                        type="button"
+                        class="mobile-dropdown__trigger"
+                        aria-expanded="false"
+                        aria-controls="mobile-markets-menu">
+                        <span>Markets</span>
+
+                        <svg
+                            class="mobile-dropdown__icon"
+                            aria-hidden="true"
+                            viewBox="0 0 12 12"
+                            width="12"
+                            height="12">
+                            <path
+                                d="M2 4.5L6 8L10 4.5"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+
+                    <div id="mobile-markets-menu" class="mobile-dropdown_menu" hidden>
+                        <a href="./pages/markets/">
+                            All Markets
+                        </a>
+
+                        <a href="./pages/markets/china/">
+                            China
+                        </a>
+
+                        <a href="./pages/markets/turkey/">
+                            Turkey
+                        </a>
+
+                        <a href="./pages/markets/middle-east/">
+                            Middle East
+                        </a>
+                    </div>
+                </li>
+                    <li class="mobile-navigation__item"><a href="./pages/how-it-works/">How It Works</a></li>
+                    <li class="mobile-navigation__item"><a href="./pages/products/">Products</a></li>
+                    <li class="mobile-navigation__item"><a href="./blog/">Resources</a></li>
+                    <li class="mobile-navigation__item"><a href="./pages/contact/">Contact</a></li>
+            </ul>
+
+            <div class="mobile-navigation__actions">
+
+                <a
+                    href="./pages/get-a-quote/"
+                    class="button button--primary"
+                >
+                    Get a Quote
+                </a>
+
+            </div>
+
+                <div class="mobile-navigation__actions">
+                    <a
+                    href="./pages/get-a-quote/"
+                    class="button button--primary">
+                    Get a Quote
+                    </a>
+                </div>
+                
             </nav>
         </div>
     </div>

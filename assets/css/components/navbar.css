@@ -2260,3 +2260,95 @@
         transition: none;
     }
 }
+
+/* =========================================================
+   FLEXEN ACCESSIBILITY
+   SKIP LINK
+   ========================================================= */
+
+.skip-link {
+    position: fixed;
+
+    top: 12px;
+    left: 12px;
+
+    z-index: 99999;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 44px;
+
+    padding: 0 18px;
+
+    color: #ffffff;
+
+    background: #071F5C;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    line-height: 1;
+
+    text-decoration: none;
+
+    transform: translateY(-150%);
+
+    transition:
+        transform 180ms ease;
+}
+
+
+/* Show only when keyboard focused */
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
+
+/* Strong visible focus */
+
+.skip-link:focus-visible {
+    outline:
+        3px solid #0797F5;
+
+    outline-offset: 3px;
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+
+        scroll-behavior: auto !important;
+
+        transition-duration: 0.01ms !important;
+    }
+
+}
+
+/* =========================================================
+   FLEXEN GLOBAL FOCUS STATES
+   ========================================================= */
+
+.navbar a:focus-visible,
+.navbar button:focus-visible,
+.mobile-navigation a:focus-visible,
+.mobile-navigation button:focus-visible {
+    outline:
+        3px solid rgba(7, 151, 245, 0.45);
+
+    outline-offset: 3px;
+
+    border-radius: 6px;
+}

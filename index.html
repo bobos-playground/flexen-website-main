@@ -193,7 +193,14 @@
         </nav>
     </div>
 
-    <div id="mobile-navigation" class="mobile-navigation" hidden>
+    <div
+      id="mobile-navigation"
+      lass="mobile-navigation"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Mobile navigation"
+      hidden>
+
         <div class="container">
             <nav  class="mobile-navigation__nav" aria-label="Mobile navigation">
                 
@@ -314,6 +321,32 @@
                 
             </nav>
         </div>
+
+        <div class="mobile-navigation__header">
+
+    <a
+        href="./index.html"
+        class="mobile-navigation__brand"
+        aria-label="FLEXEN Home"
+    >
+        <img
+            src="./assets/images/brand/logo.svg"
+            alt="FLEXEN"
+            width="150"
+            height="40"
+        >
+    </a>
+
+    <button
+        type="button"
+        class="mobile-navigation__close"
+        aria-label="Close navigation menu"
+    >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </button>
+
+</div>
     </div>
 </header>
 
@@ -767,16 +800,21 @@
 <!-- =========================================================
      REUSABLE JAVASCRIPT
 ========================================================== -->
-    <script src="assets/js/core/config.js" defer></script>
-    <script src="assets/js/core/navigation.js" defer></script>
-    <script src="assets/js/core/theme.js" defer></script>
-    <script src="assets/js/core/accessibility.js" defer></script>
-    <script src="assets/js/core/lazy-loading.js" defer></script>
-    <script src="assets/js/core/utilities.js" defer></script>
-    <script src="assets/js/components/mobile-menu.js" defer></script>
-    <script src="assets/js/components/dropdown.js" defer></script>
-    <script src="assets/js/components/scroll.js" defer></script>
-    <script src="assets/js/components/sticky-header.js" defer></script>
+<script src="assets/js/core/config.js" defer></script>
+<script src="assets/js/core/navigation.js" defer></script>
+<script src="assets/js/core/theme.js" defer></script>
+<script src="assets/js/core/accessibility.js" defer></script>
+<script src="assets/js/core/lazy-loading.js" defer></script>
+<script src="assets/js/core/utilities.js" defer></script>
+
+<!-- Navbar controller -->
+<script src="assets/js/components/navbar.js" defer></script>
+
+<!-- Navbar components -->
+<script src="assets/js/components/mobile-menu.js" defer></script>
+<script src="assets/js/components/dropdown.js" defer></script>
+<script src="assets/js/components/scroll.js" defer></script>
+<script src="assets/js/components/sticky-header.js" defer></script>
 
 </body>
 </html>

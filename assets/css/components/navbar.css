@@ -1,77 +1,135 @@
 /* =========================================================
-   FLEXEN — NAVBAR
-   Corporate / Trade / Finance Navigation
+   FLEXEN 2.0
+   PREMIUM NAVIGATION SYSTEM
+   Inspired by FLEXEN Navigation Bar Reference
    ========================================================= */
 
 
-/* ---------------------------------------------------------
-   1. HEADER
-   --------------------------------------------------------- */
+/* =========================================================
+   01. DESIGN TOKENS
+   ========================================================= */
+
+:root {
+    /* FLEXEN BRAND */
+    --flexen-navy: #0B1F3A;
+    --flexen-deep: #071529;
+    --flexen-blue: #0B5FA5;
+    --flexen-bright: #149BEE;
+    --flexen-light-blue: #6CB6EA;
+
+    /* NEUTRALS */
+    --nav-white: #FFFFFF;
+    --nav-text: #0B1F3A;
+    --nav-muted: #64748B;
+    --nav-border: rgba(11, 31, 58, 0.10);
+
+    /* NAVBAR */
+    --navbar-height: 70px;
+    --navbar-radius: 10px;
+
+    /* SHADOW */
+    --navbar-shadow:
+        0 8px 30px rgba(7, 21, 41, 0.07);
+
+    --navbar-shadow-hover:
+        0 12px 36px rgba(7, 21, 41, 0.11);
+}
+
+
+/* =========================================================
+   02. SITE HEADER
+   ========================================================= */
 
 .site-header {
-    --navbar-height: 78px;
-
     position: sticky;
+
     top: 0;
+
     z-index: 1000;
 
     width: 100%;
-    height: var(--navbar-height);
 
-    background: rgba(255, 255, 255, 0.94);
-    border-bottom: 1px solid rgba(11, 31, 58, 0.08);
+    padding: 14px 0;
 
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: transparent;
+
+    border: 0;
 
     transition:
+        padding 0.25s ease,
         background-color 0.25s ease,
-        box-shadow 0.25s ease,
-        border-color 0.25s ease;
+        box-shadow 0.25s ease;
 }
 
 
-/* Header after scrolling */
-
-.site-header.is-scrolled {
-    background: rgba(255, 255, 255, 0.97);
-
-    box-shadow:
-        0 4px 20px rgba(7, 21, 41, 0.08);
-
-    border-bottom-color: rgba(11, 31, 58, 0.12);
-}
-
-
-/* ---------------------------------------------------------
-   2. NAVBAR
-   --------------------------------------------------------- */
+/* =========================================================
+   03. MAIN NAVBAR
+   ========================================================= */
 
 .navbar {
-    width: 100%;
-    min-height: var(--navbar-height);
+    position: relative;
 
     display: flex;
-    align-items: center;
-    justify-content: space-between;
 
-    gap: 32px;
+    align-items: center;
+
+    width: 100%;
+
+    min-height: var(--navbar-height);
+
+    padding: 0 18px;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    border: 1px solid rgba(11, 31, 58, 0.06);
+
+    border-radius: var(--navbar-radius);
+
+    box-shadow: var(--navbar-shadow);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    transition:
+        min-height 0.25s ease,
+        padding 0.25s ease,
+        background-color 0.25s ease,
+        box-shadow 0.25s ease,
+        border-radius 0.25s ease;
 }
 
 
-/* ---------------------------------------------------------
-   3. FLEXEN BRAND
-   --------------------------------------------------------- */
+/* =========================================================
+   04. SCROLLED / COMPACT STATE
+   ========================================================= */
+
+.site-header.is-scrolled {
+    padding: 7px 0;
+}
+
+
+.site-header.is-scrolled .navbar {
+    min-height: 62px;
+
+    box-shadow:
+        0 6px 24px rgba(7, 21, 41, 0.10);
+}
+
+
+/* =========================================================
+   05. LOGO / BRAND
+   ========================================================= */
 
 .navbar__brand {
     display: inline-flex;
+
     align-items: center;
 
     flex-shrink: 0;
 
-    text-decoration: none;
-
     line-height: 0;
+
+    text-decoration: none;
 
     transition:
         opacity 0.2s ease,
@@ -80,24 +138,25 @@
 
 
 .navbar__brand:hover {
-    opacity: 0.92;
+    opacity: 0.94;
 }
 
 
 .navbar__brand:focus-visible {
-    outline: 3px solid rgba(11, 95, 165, 0.35);
+    outline: 3px solid rgba(20, 155, 238, 0.30);
+
     outline-offset: 5px;
-    border-radius: 6px;
+
+    border-radius: 5px;
 }
 
-
-/* Logo */
 
 .navbar__brand img {
     display: block;
 
-    width: 150px;
-    height: 40px;
+    width: 155px;
+
+    height: auto;
 
     max-width: none;
 
@@ -105,38 +164,83 @@
 }
 
 
-/* ---------------------------------------------------------
-   4. NAVIGATION LINKS
-   --------------------------------------------------------- */
+/* =========================================================
+   06. DESKTOP NAVIGATION
+   ========================================================= */
 
-.navbar__menu {
+.navbar__desktop {
     display: flex;
+
     align-items: center;
 
-    gap: 6px;
+    justify-content: center;
 
-    margin-left: auto;
+    flex: 1;
+
+    min-width: 0;
+
+    margin-left: 28px;
 }
 
 
-.navbar__link {
+.navbar_menu {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 2px;
+
+    margin: 0;
+
+    padding: 0;
+
+    list-style: none;
+}
+
+
+.navbar_item {
+    position: relative;
+
+    margin: 0;
+
+    padding: 0;
+}
+
+
+/* =========================================================
+   07. STANDARD NAVIGATION LINKS
+   ========================================================= */
+
+.navbar_item > a {
     position: relative;
 
     display: inline-flex;
+
     align-items: center;
 
+    justify-content: center;
+
     min-height: 44px;
-    padding: 0 14px;
 
-    color: #0B1F3A;
+    padding: 0 15px;
 
-    font-size: 0.95rem;
+    color: var(--nav-text);
+
+    font-family: inherit;
+
+    font-size: 0.91rem;
+
     font-weight: 600;
+
     line-height: 1;
 
     text-decoration: none;
 
-    border-radius: 8px;
+    white-space: nowrap;
+
+    border-radius: 6px;
 
     transition:
         color 0.2s ease,
@@ -144,97 +248,388 @@
 }
 
 
-.navbar__link:hover {
-    color: #0B5FA5;
-    background: rgba(11, 95, 165, 0.06);
+/* Hover */
+
+.navbar_item > a:hover {
+    color: var(--flexen-blue);
+
+    background: rgba(11, 95, 165, 0.045);
 }
 
 
-.navbar__link:focus-visible {
-    outline: 3px solid rgba(11, 95, 165, 0.28);
+/* Focus */
+
+.navbar_item > a:focus-visible {
+    outline: 3px solid rgba(20, 155, 238, 0.25);
+
     outline-offset: 2px;
 }
 
 
-/* Active navigation item */
+/* Active */
 
-.navbar__link[aria-current="page"] {
-    color: #0B5FA5;
+.navbar_item > a[aria-current="page"] {
+    color: var(--flexen-blue);
 }
 
 
-/* Small active indicator */
+/* Active line */
 
-.navbar__link[aria-current="page"]::after {
+.navbar_item > a[aria-current="page"]::after {
     content: "";
 
     position: absolute;
 
-    left: 14px;
-    right: 14px;
-    bottom: 5px;
+    left: 15px;
+
+    right: 15px;
+
+    bottom: 4px;
 
     height: 2px;
 
-    background: #0B5FA5;
+    background: var(--flexen-bright);
 
     border-radius: 999px;
 }
 
 
-/* ---------------------------------------------------------
-   5. NAVIGATION DROPDOWN INDICATOR
-   --------------------------------------------------------- */
+/* =========================================================
+   08. DROPDOWN TRIGGER
+   ========================================================= */
 
-.navbar__link--dropdown {
-    gap: 7px;
+.nav-dropdown {
+    position: relative;
 }
 
 
-.navbar__link--dropdown::before {
+.nav-dropdown__trigger {
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    min-height: 44px;
+
+    padding: 0 15px;
+
+    margin: 0;
+
+    color: var(--nav-text);
+
+    background: transparent;
+
+    border: 0;
+
+    border-radius: 6px;
+
+    font-family: inherit;
+
+    font-size: 0.91rem;
+
+    font-weight: 600;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+
+.nav-dropdown__trigger:hover {
+    color: var(--flexen-blue);
+
+    background: rgba(11, 95, 165, 0.045);
+}
+
+
+.nav-dropdown__trigger:focus-visible {
+    outline: 3px solid rgba(20, 155, 238, 0.25);
+
+    outline-offset: 2px;
+}
+
+
+/* Open */
+
+.nav-dropdown__trigger[aria-expanded="true"] {
+    color: var(--flexen-blue);
+
+    background: rgba(11, 95, 165, 0.045);
+}
+
+
+/* =========================================================
+   09. DROPDOWN ICON
+   ========================================================= */
+
+.nav-dropdown__icon {
+    width: 11px;
+
+    height: 11px;
+
+    flex-shrink: 0;
+
+    transition:
+        transform 0.2s ease;
+}
+
+
+.nav-dropdown__trigger[aria-expanded="true"]
+.nav-dropdown__icon {
+    transform: rotate(180deg);
+}
+
+
+/* =========================================================
+   10. DROPDOWN ACTIVE LINE
+   ========================================================= */
+
+.nav-dropdown__trigger[aria-expanded="true"]::after {
     content: "";
 
-    width: 6px;
-    height: 6px;
+    position: absolute;
 
-    border-right: 1.5px solid currentColor;
-    border-bottom: 1.5px solid currentColor;
+    left: 15px;
 
-    transform: rotate(45deg) translateY(-2px);
+    right: 15px;
 
-    order: 2;
+    bottom: 4px;
 
-    transition: transform 0.2s ease;
+    height: 2px;
+
+    background: var(--flexen-bright);
+
+    border-radius: 999px;
 }
 
 
-.navbar__link--dropdown:hover::before {
-    transform: rotate(45deg) translateY(1px);
+/* =========================================================
+   11. DROPDOWN MENU
+   ========================================================= */
+
+.nav-dropdown__menu {
+    position: absolute;
+
+    top: calc(100% + 9px);
+
+    left: 50%;
+
+    width: 330px;
+
+    transform: translateX(-50%);
+
+    padding: 7px;
+
+    background: rgba(255, 255, 255, 0.98);
+
+    border: 1px solid rgba(11, 31, 58, 0.08);
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 18px 45px rgba(7, 21, 41, 0.13),
+        0 4px 12px rgba(7, 21, 41, 0.05);
+
+    backdrop-filter: blur(16px);
+
+    -webkit-backdrop-filter: blur(16px);
+
+    z-index: 1100;
+
+    animation: flexenDropdownIn 0.16s ease-out;
 }
 
 
-/* ---------------------------------------------------------
-   6. NAVBAR ACTIONS
-   --------------------------------------------------------- */
+@keyframes flexenDropdownIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateX(-50%)
+            translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateX(-50%)
+            translateY(0);
+    }
+}
+
+
+/* Dropdown links */
+
+.nav-dropdown__menu a {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+
+    width: 100%;
+
+    padding: 12px 13px;
+
+    color: var(--nav-text);
+
+    font-size: 0.88rem;
+
+    font-weight: 600;
+
+    line-height: 1.3;
+
+    text-decoration: none;
+
+    border-radius: 6px;
+
+    transition:
+        color 0.18s ease,
+        background-color 0.18s ease;
+}
+
+
+.nav-dropdown__menu a:hover {
+    color: var(--flexen-blue);
+
+    background: rgba(11, 95, 165, 0.055);
+}
+
+
+.nav-dropdown__menu a span {
+    font-weight: 650;
+}
+
+
+.nav-dropdown__menu a small {
+    color: var(--nav-muted);
+
+    font-size: 0.75rem;
+
+    font-weight: 400;
+}
+
+
+/* =========================================================
+   12. MARKETS DROPDOWN
+   ========================================================= */
+
+.nav-dropdown__menu--markets {
+    width: 290px;
+}
+
+
+/* =========================================================
+   13. NAVBAR ACTIONS
+   ========================================================= */
 
 .navbar__actions {
     display: flex;
+
     align-items: center;
 
-    gap: 10px;
+    gap: 12px;
 
-    margin-left: 10px;
+    flex-shrink: 0;
+
+    margin-left: 18px;
 }
 
 
-/* ---------------------------------------------------------
-   7. PRIMARY CTA
-   --------------------------------------------------------- */
+/* =========================================================
+   14. SEARCH BUTTON
+   ========================================================= */
 
-.navbar__cta {
+/*
+   If you add:
+
+   <button class="navbar__search">
+       SVG
+   </button>
+
+   this will match the reference image.
+*/
+
+.navbar__search {
     display: inline-flex;
+
     align-items: center;
+
     justify-content: center;
+
+    width: 42px;
+
+    height: 42px;
+
+    padding: 0;
+
+    color: var(--flexen-navy);
+
+    background: transparent;
+
+    border: 0;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+
+.navbar__search:hover {
+    color: var(--flexen-blue);
+
+    background: rgba(11, 95, 165, 0.05);
+}
+
+
+/* Vertical separator */
+
+.navbar__search::after {
+    content: "";
+
+    position: absolute;
+
+    margin-left: 54px;
+
+    width: 1px;
+
+    height: 28px;
+
+    background: rgba(11, 31, 58, 0.14);
+}
+
+
+/* =========================================================
+   15. GET A QUOTE
+   ========================================================= */
+
+.navbar__actions .button--primary {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 14px;
+
+    min-width: 155px;
 
     min-height: 44px;
 
@@ -242,13 +637,23 @@
 
     color: #ffffff;
 
-    background: #0B5FA5;
+    background:
+        linear-gradient(
+            135deg,
+            #149BEE 0%,
+            #0B8FE3 100%
+        );
 
-    border: 1px solid #0B5FA5;
-    border-radius: 8px;
+    border: 1px solid rgba(20, 155, 238, 0.5);
 
-    font-size: 0.9rem;
+    border-radius: 6px;
+
+    font-family: inherit;
+
+    font-size: 0.87rem;
+
     font-weight: 700;
+
     line-height: 1;
 
     text-decoration: none;
@@ -256,100 +661,104 @@
     white-space: nowrap;
 
     box-shadow:
-        0 4px 12px rgba(11, 95, 165, 0.18);
+        0 5px 15px rgba(11, 95, 165, 0.14);
 
     transition:
-        background-color 0.2s ease,
-        border-color 0.2s ease,
+        transform 0.2s ease,
         box-shadow 0.2s ease,
-        transform 0.2s ease;
+        background 0.2s ease;
 }
 
 
-.navbar__cta:hover {
+.navbar__actions .button--primary:hover {
     color: #ffffff;
 
-    background: #084A82;
-    border-color: #084A82;
+    transform: translateY(-1px);
 
     box-shadow:
-        0 6px 18px rgba(11, 95, 165, 0.25);
+        0 8px 20px rgba(11, 95, 165, 0.22);
 
-    transform: translateY(-1px);
+    background:
+        linear-gradient(
+            135deg,
+            #20A5F5 0%,
+            #0B82D4 100%
+        );
 }
 
 
-.navbar__cta:active {
+.navbar__actions .button--primary:active {
     transform: translateY(0);
 }
 
 
-.navbar__cta:focus-visible {
-    outline: 3px solid rgba(11, 95, 165, 0.3);
+.navbar__actions .button--primary:focus-visible {
+    outline: 3px solid rgba(20, 155, 238, 0.30);
+
     outline-offset: 3px;
 }
 
 
-/* ---------------------------------------------------------
-   8. SECONDARY CTA
-   --------------------------------------------------------- */
+/* =========================================================
+   16. CTA ARROW
+   ========================================================= */
 
-.navbar__secondary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+/*
+   Automatically adds the arrow shown in your
+   reference image.
 
-    min-height: 44px;
+   Your HTML can remain:
 
-    padding: 0 16px;
+   Get a Quote
+*/
 
-    color: #0B1F3A;
+.navbar__actions .button--primary::after {
+    content: "→";
 
-    background: transparent;
+    font-size: 1.15rem;
 
-    border: 1px solid rgba(11, 31, 58, 0.16);
-    border-radius: 8px;
+    font-weight: 400;
 
-    font-size: 0.9rem;
-    font-weight: 600;
-
-    text-decoration: none;
+    line-height: 1;
 
     transition:
-        background-color 0.2s ease,
-        border-color 0.2s ease,
-        color 0.2s ease;
+        transform 0.2s ease;
 }
 
 
-.navbar__secondary:hover {
-    color: #0B5FA5;
-
-    background: rgba(11, 95, 165, 0.05);
-
-    border-color: rgba(11, 95, 165, 0.3);
+.navbar__actions .button--primary:hover::after {
+    transform: translateX(3px);
 }
 
 
-/* ---------------------------------------------------------
-   9. MOBILE MENU BUTTON
-   --------------------------------------------------------- */
+/* =========================================================
+   17. MOBILE MENU TOGGLE
+   ========================================================= */
 
-.navbar__toggle {
+.mobile-menu-toggle {
     display: none;
 
-    width: 44px;
-    height: 44px;
+    position: relative;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-direction: column;
+
+    width: 42px;
+
+    height: 42px;
+
+    margin-left: auto;
 
     padding: 0;
 
-    align-items: center;
-    justify-content: center;
-
     background: transparent;
 
-    border: 1px solid rgba(11, 31, 58, 0.12);
-    border-radius: 8px;
+    border: 1px solid rgba(11, 31, 58, 0.10);
+
+    border-radius: 6px;
 
     cursor: pointer;
 
@@ -359,29 +768,16 @@
 }
 
 
-.navbar__toggle:hover {
-    background: rgba(11, 95, 165, 0.06);
-    border-color: rgba(11, 95, 165, 0.25);
-}
-
-
-.navbar__toggle:focus-visible {
-    outline: 3px solid rgba(11, 95, 165, 0.28);
-    outline-offset: 2px;
-}
-
-
-/* Hamburger */
-
-.navbar__toggle-icon,
-.navbar__toggle-icon::before,
-.navbar__toggle-icon::after {
+.mobile-menu-toggle span {
     display: block;
 
-    width: 20px;
-    height: 2px;
+    width: 19px;
 
-    background: #0B1F3A;
+    height: 1.8px;
+
+    margin: 2.5px 0;
+
+    background: var(--flexen-navy);
 
     border-radius: 999px;
 
@@ -391,842 +787,103 @@
 }
 
 
-.navbar__toggle-icon {
-    position: relative;
-}
+.mobile-menu-toggle:hover {
+    background: rgba(11, 95, 165, 0.05);
 
-
-.navbar__toggle-icon::before,
-.navbar__toggle-icon::after {
-    content: "";
-
-    position: absolute;
-    left: 0;
-}
-
-
-.navbar__toggle-icon::before {
-    top: -6px;
-}
-
-
-.navbar__toggle-icon::after {
-    top: 6px;
+    border-color: rgba(11, 95, 165, 0.22);
 }
 
 
 /* Open state */
 
-.navbar__toggle[aria-expanded="true"] .navbar__toggle-icon {
-    background: transparent;
+.mobile-menu-toggle[aria-expanded="true"]
+span:nth-child(1) {
+    transform:
+        translateY(6px)
+        rotate(45deg);
 }
 
 
-.navbar__toggle[aria-expanded="true"] .navbar__toggle-icon::before {
-    transform: translateY(6px) rotate(45deg);
+.mobile-menu-toggle[aria-expanded="true"]
+span:nth-child(2) {
+    opacity: 0;
 }
 
 
-.navbar__toggle[aria-expanded="true"] .navbar__toggle-icon::after {
-    transform: translateY(-6px) rotate(-45deg);
+.mobile-menu-toggle[aria-expanded="true"]
+span:nth-child(3) {
+    transform:
+        translateY(-6px)
+        rotate(-45deg);
 }
 
-
-/* ---------------------------------------------------------
-   10. DARK THEME
-   --------------------------------------------------------- */
-
-[data-theme="dark"] .site-header {
-    background: rgba(7, 21, 41, 0.92);
-
-    border-bottom-color: rgba(255, 255, 255, 0.08);
-}
-
-
-[data-theme="dark"] .site-header.is-scrolled {
-    background: rgba(7, 21, 41, 0.97);
-
-    box-shadow:
-        0 8px 30px rgba(0, 0, 0, 0.25);
-}
-
-
-[data-theme="dark"] .navbar__link {
-    color: #EAF2F8;
-}
-
-
-[data-theme="dark"] .navbar__link:hover {
-    color: #6CB6EA;
-
-    background: rgba(108, 182, 234, 0.08);
-}
-
-
-[data-theme="dark"] .navbar__link[aria-current="page"] {
-    color: #6CB6EA;
-}
-
-
-[data-theme="dark"] .navbar__link[aria-current="page"]::after {
-    background: #6CB6EA;
-}
-
-
-[data-theme="dark"] .navbar__secondary {
-    color: #EAF2F8;
-
-    border-color: rgba(255, 255, 255, 0.16);
-}
-
-
-[data-theme="dark"] .navbar__secondary:hover {
-    color: #6CB6EA;
-
-    background: rgba(108, 182, 234, 0.08);
-
-    border-color: rgba(108, 182, 234, 0.3);
-}
-
-
-[data-theme="dark"] .navbar__toggle {
-    border-color: rgba(255, 255, 255, 0.14);
-}
-
-
-[data-theme="dark"] .navbar__toggle:hover {
-    background: rgba(255, 255, 255, 0.06);
-}
-
-
-[data-theme="dark"] .navbar__toggle-icon,
-[data-theme="dark"] .navbar__toggle-icon::before,
-[data-theme="dark"] .navbar__toggle-icon::after {
-    background: #EAF2F8;
-}
-
-
-[data-theme="dark"] .navbar__toggle[aria-expanded="true"] .navbar__toggle-icon {
-    background: transparent;
-}
-
-
-/* ---------------------------------------------------------
-   11. RESPONSIVE — TABLET
-   --------------------------------------------------------- */
-
-@media (max-width: 1100px) {
-
-    .navbar {
-        gap: 20px;
-    }
-
-    .navbar__menu {
-        gap: 2px;
-    }
-
-    .navbar__link {
-        padding-left: 11px;
-        padding-right: 11px;
-
-        font-size: 0.9rem;
-    }
-
-    .navbar__cta {
-        padding-left: 16px;
-        padding-right: 16px;
-    }
-}
-
-
-/* ---------------------------------------------------------
-   12. RESPONSIVE — MOBILE
-   --------------------------------------------------------- */
-
-@media (max-width: 900px) {
-
-    .site-header {
-        --navbar-height: 72px;
-    }
-
-    .navbar {
-        position: relative;
-    }
-
-    .navbar__brand img {
-        width: 140px;
-        height: auto;
-    }
-
-    .navbar__toggle {
-        display: inline-flex;
-
-        margin-left: auto;
-    }
-
-    .navbar__menu,
-    .navbar__actions {
-        display: none;
-    }
-
-    /*
-     * When JavaScript adds .is-open,
-     * the navigation becomes a mobile panel.
-     */
-
-    .navbar.is-open {
-        flex-wrap: wrap;
-    }
-
-    .navbar.is-open .navbar__menu {
-        display: flex;
-
-        position: absolute;
-
-        top: calc(100% + 1px);
-        left: 0;
-        right: 0;
-
-        flex-direction: column;
-        align-items: stretch;
-
-        gap: 4px;
-
-        padding: 14px;
-
-        background: #ffffff;
-
-        border: 1px solid rgba(11, 31, 58, 0.08);
-        border-top: 0;
-
-        box-shadow:
-            0 15px 35px rgba(7, 21, 41, 0.12);
-
-        border-radius: 0 0 12px 12px;
-    }
-
-    .navbar.is-open .navbar__link {
-        width: 100%;
-
-        justify-content: space-between;
-
-        padding: 0 14px;
-
-        min-height: 48px;
-    }
-
-    .navbar.is-open .navbar__actions {
-        display: flex;
-
-        position: absolute;
-
-        top: calc(100% + 275px);
-        left: 14px;
-        right: 14px;
-
-        padding-bottom: 14px;
-    }
-
-    .navbar.is-open .navbar__cta {
-        width: 100%;
-    }
-
-
-    /* Dark mobile menu */
-
-    [data-theme="dark"] .navbar.is-open .navbar__menu {
-        background: #071529;
-
-        border-color: rgba(255, 255, 255, 0.08);
-
-        box-shadow:
-            0 15px 35px rgba(0, 0, 0, 0.35);
-    }
-}
-
-
-/* ---------------------------------------------------------
-   13. SMALL MOBILE
-   --------------------------------------------------------- */
-
-@media (max-width: 480px) {
-
-    .site-header {
-        --navbar-height: 68px;
-    }
-
-    .navbar__brand img {
-        width: 125px;
-    }
-
-    .navbar__toggle {
-        width: 42px;
-        height: 42px;
-    }
-}
-
-
-/* ---------------------------------------------------------
-   14. REDUCED MOTION
-   --------------------------------------------------------- */
-
-@media (prefers-reduced-motion: reduce) {
-
-    .site-header,
-    .navbar__brand,
-    .navbar__link,
-    .navbar__cta,
-    .navbar__secondary,
-    .navbar__toggle,
-    .navbar__toggle-icon,
-    .navbar__toggle-icon::before,
-    .navbar__toggle-icon::after {
-        transition: none;
-    }
-}
 
 /* =========================================================
-   FLEXEN — DESKTOP NAVIGATION
+   18. DARK NAVBAR
    ========================================================= */
 
-.navbar__desktop {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    flex: 1;
-}
-
-
-/* ---------------------------------------------------------
-   NAVIGATION LIST
-   --------------------------------------------------------- */
-
-.navbar_menu {
-    display: flex;
-    align-items: center;
-
-    gap: 4px;
-
-    margin: 0;
-    padding: 0;
-
-    list-style: none;
-}
-
-
-/* ---------------------------------------------------------
-   NAVIGATION ITEM
-   --------------------------------------------------------- */
-
-.navbar_item {
-    position: relative;
-
-    margin: 0;
-    padding: 0;
-}
-
-
-/* ---------------------------------------------------------
-   NAVIGATION LINK
-   --------------------------------------------------------- */
-
-.navbar_item > a {
-    position: relative;
-
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    min-height: 46px;
-
-    padding: 0 15px;
-
-    color: #0B1F3A;
-
-    font-family: inherit;
-    font-size: 0.95rem;
-    font-weight: 600;
-    line-height: 1;
-
-    text-decoration: none;
-
-    border-radius: 7px;
-
-    transition:
-        color 0.2s ease,
-        background-color 0.2s ease;
-}
-
-
-/* ---------------------------------------------------------
-   HOVER
-   --------------------------------------------------------- */
-
-.navbar_item > a:hover {
-    color: #0B5FA5;
-
-    background: rgba(11, 95, 165, 0.06);
-}
-
-
-/* ---------------------------------------------------------
-   ACTIVE PAGE
-   --------------------------------------------------------- */
-
-.navbar_item > a[aria-current="page"] {
-    color: #0B5FA5;
-}
-
-
-/* Active underline */
-
-.navbar_item > a[aria-current="page"]::after {
-    content: "";
-
-    position: absolute;
-
-    left: 15px;
-    right: 15px;
-    bottom: 5px;
-
-    height: 2px;
-
-    background: #0B5FA5;
-
-    border-radius: 999px;
-}
-
-
-/* ---------------------------------------------------------
-   FOCUS ACCESSIBILITY
-   --------------------------------------------------------- */
-
-.navbar_item > a:focus-visible {
-    outline: 3px solid rgba(11, 95, 165, 0.25);
-    outline-offset: 3px;
-}
-
-
-/* ---------------------------------------------------------
-   DARK THEME
-   --------------------------------------------------------- */
-
-[data-theme="dark"] .navbar_item > a {
-    color: #EAF2F8;
-}
-
-
-[data-theme="dark"] .navbar_item > a:hover {
-    color: #6CB6EA;
-
-    background: rgba(108, 182, 234, 0.08);
-}
-
-
-[data-theme="dark"] .navbar_item > a[aria-current="page"] {
-    color: #6CB6EA;
-}
-
-
-[data-theme="dark"] .navbar_item > a[aria-current="page"]::after {
-    background: #6CB6EA;
-}
-
-
-/* ---------------------------------------------------------
-   TABLET
-   --------------------------------------------------------- */
-
-@media (max-width: 1100px) {
-
-    .navbar_menu {
-        gap: 2px;
-    }
-
-    .navbar_item > a {
-        padding-left: 11px;
-        padding-right: 11px;
-
-        font-size: 0.9rem;
-    }
-}
-
-
-/* ---------------------------------------------------------
-   MOBILE
-   --------------------------------------------------------- */
-
-@media (max-width: 900px) {
-
-    .navbar__desktop {
-        display: none;
-    }
-
-}
-
-/* =========================================================
-   FLEXEN — SERVICES DROPDOWN
-   ========================================================= */
-
-
-/* ---------------------------------------------------------
-   1. DROPDOWN CONTAINER
-   --------------------------------------------------------- */
-
-.nav-dropdown {
-    position: relative;
-}
-
-
-/* ---------------------------------------------------------
-   2. DROPDOWN TRIGGER
-   --------------------------------------------------------- */
-
-.nav-dropdown__trigger {
-    position: relative;
-
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    gap: 8px;
-
-    min-height: 46px;
-
-    padding: 0 15px;
-
-    margin: 0;
-
-    color: #0B1F3A;
-
-    background: transparent;
-
-    border: 0;
-    border-radius: 7px;
-
-    font-family: inherit;
-    font-size: 0.95rem;
-    font-weight: 600;
-    line-height: 1;
-
-    cursor: pointer;
-
-    white-space: nowrap;
-
-    transition:
-        color 0.2s ease,
-        background-color 0.2s ease;
-}
-
-
-/* ---------------------------------------------------------
-   3. TRIGGER HOVER
-   --------------------------------------------------------- */
-
-.nav-dropdown__trigger:hover {
-    color: #0B5FA5;
-
-    background: rgba(11, 95, 165, 0.06);
-}
-
-
-/* ---------------------------------------------------------
-   4. TRIGGER FOCUS
-   --------------------------------------------------------- */
-
-.nav-dropdown__trigger:focus-visible {
-    outline: 3px solid rgba(11, 95, 165, 0.25);
-    outline-offset: 3px;
-}
-
-
-/* ---------------------------------------------------------
-   5. DROPDOWN ARROW
-   --------------------------------------------------------- */
-
-.nav-dropdown__icon {
-    flex-shrink: 0;
-
-    width: 12px;
-    height: 12px;
-
-    transition:
-        transform 0.2s ease;
-}
-
-
-/* Rotate arrow when menu is open */
-
-.nav-dropdown__trigger[aria-expanded="true"]
-.nav-dropdown__icon {
-    transform: rotate(180deg);
-}
-
-
-/* Open trigger */
-
-.nav-dropdown__trigger[aria-expanded="true"] {
-    color: #0B5FA5;
-
-    background: rgba(11, 95, 165, 0.06);
-}
-
-
-/* ---------------------------------------------------------
-   6. ACTIVE INDICATOR
-   --------------------------------------------------------- */
-
-.nav-dropdown__trigger[aria-expanded="true"]::after {
-    content: "";
-
-    position: absolute;
-
-    left: 15px;
-    right: 15px;
-    bottom: 5px;
-
-    height: 2px;
-
-    background: #0B5FA5;
-
-    border-radius: 999px;
-}
-
-
-/* ---------------------------------------------------------
-   7. DROPDOWN PANEL
-   --------------------------------------------------------- */
-
-.nav-dropdown__menu {
-    position: absolute;
-
-    top: calc(100% + 10px);
-    left: 50%;
-
-    width: 330px;
-
-    transform: translateX(-50%);
-
-    padding: 8px;
-
-    background: #ffffff;
-
-    border: 1px solid rgba(11, 31, 58, 0.09);
-
-    border-radius: 12px;
+.site-header[data-theme="dark"] .navbar,
+[data-theme="dark"] .navbar {
+    background:
+        linear-gradient(
+            135deg,
+            #071F3C,
+            #092B52
+        );
+
+    border-color:
+        rgba(255, 255, 255, 0.08);
 
     box-shadow:
-        0 18px 45px rgba(7, 21, 41, 0.12),
-        0 4px 12px rgba(7, 21, 41, 0.05);
-
-    z-index: 1100;
-
-    animation: flexenDropdownIn 0.18s ease-out;
+        0 10px 30px rgba(0, 0, 0, 0.18);
 }
 
 
-/* ---------------------------------------------------------
-   8. DROPDOWN ANIMATION
-   --------------------------------------------------------- */
-
-@keyframes flexenDropdownIn {
-
-    from {
-        opacity: 0;
-        transform:
-            translateX(-50%)
-            translateY(-6px);
-    }
-
-    to {
-        opacity: 1;
-        transform:
-            translateX(-50%)
-            translateY(0);
-    }
-
-}
-
-
-/* ---------------------------------------------------------
-   9. DROPDOWN LINKS
-   --------------------------------------------------------- */
-
-.nav-dropdown__menu a {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 4px;
-
-    width: 100%;
-
-    padding: 13px 14px;
-
-    color: #0B1F3A;
-
-    text-decoration: none;
-
-    border-radius: 8px;
-
-    transition:
-        background-color 0.18s ease,
-        color 0.18s ease;
-}
-
-
-/* Main link title */
-
-.nav-dropdown__menu a span {
-    display: block;
-
-    font-size: 0.9rem;
-    font-weight: 650;
-
-    line-height: 1.25;
-}
-
-
-/* Supporting text */
-
-.nav-dropdown__menu a small {
-    display: block;
-
-    color: #64748B;
-
-    font-size: 0.78rem;
-    font-weight: 400;
-
-    line-height: 1.35;
-}
-
-
-/* ---------------------------------------------------------
-   10. DROPDOWN LINK HOVER
-   --------------------------------------------------------- */
-
-.nav-dropdown__menu a:hover {
-    background: rgba(11, 95, 165, 0.06);
-
-    color: #0B5FA5;
-}
-
-
-.nav-dropdown__menu a:hover small {
-    color: #52718D;
-}
-
-
-/* ---------------------------------------------------------
-   11. DROPDOWN LINK FOCUS
-   --------------------------------------------------------- */
-
-.nav-dropdown__menu a:focus-visible {
-    outline: 2px solid rgba(11, 95, 165, 0.3);
-    outline-offset: -2px;
-}
-
-
-/* ---------------------------------------------------------
-   12. FIRST ITEM
-   --------------------------------------------------------- */
-
-.nav-dropdown__menu a:first-child {
-    border-bottom: 1px solid rgba(11, 31, 58, 0.07);
-
-    margin-bottom: 5px;
-
-    padding-bottom: 15px;
-}
-
-
-/* ---------------------------------------------------------
-   13. MOBILE
-   --------------------------------------------------------- */
-
-@media (max-width: 900px) {
-
-    .nav-dropdown {
-        width: 100%;
-    }
-
-
-    .nav-dropdown__trigger {
-        width: 100%;
-
-        justify-content: space-between;
-
-        min-height: 48px;
-
-        padding: 0 14px;
-    }
-
-
-    .nav-dropdown__menu {
-        position: static;
-
-        width: 100%;
-
-        transform: none;
-
-        margin-top: 4px;
-
-        padding: 5px;
-
-        border: 0;
-
-        border-radius: 8px;
-
-        background: rgba(11, 95, 165, 0.035);
-
-        box-shadow: none;
-
-        animation: none;
-    }
-
-
-    .nav-dropdown__menu a {
-        padding: 12px;
-    }
-
-
-    .nav-dropdown__menu a:first-child {
-        margin-bottom: 3px;
-        padding-bottom: 12px;
-    }
-
-}
-
-
-/* ---------------------------------------------------------
-   14. DARK THEME
-   --------------------------------------------------------- */
-
+[data-theme="dark"] .navbar_item > a,
 [data-theme="dark"] .nav-dropdown__trigger {
-    color: #EAF2F8;
+    color: #F4F8FC;
 }
 
 
-[data-theme="dark"] .nav-dropdown__trigger:hover,
+[data-theme="dark"] .navbar_item > a:hover,
+[data-theme="dark"] .nav-dropdown__trigger:hover {
+    color: #6CB6EA;
+
+    background:
+        rgba(108, 182, 234, 0.08);
+}
+
+
+[data-theme="dark"]
+.navbar_item > a[aria-current="page"] {
+    color: #6CB6EA;
+}
+
+
+[data-theme="dark"]
+.navbar_item > a[aria-current="page"]::after,
+[data-theme="dark"]
+.nav-dropdown__trigger[aria-expanded="true"]::after {
+    background: #149BEE;
+}
+
+
 [data-theme="dark"]
 .nav-dropdown__trigger[aria-expanded="true"] {
     color: #6CB6EA;
 
-    background: rgba(108, 182, 234, 0.08);
+    background:
+        rgba(108, 182, 234, 0.08);
 }
 
 
-[data-theme="dark"]
-.nav-dropdown__trigger[aria-expanded="true"]::after {
-    background: #6CB6EA;
-}
-
+/* Dark dropdown */
 
 [data-theme="dark"] .nav-dropdown__menu {
-    background: #071529;
+    background: #071D35;
 
-    border-color: rgba(255, 255, 255, 0.09);
+    border-color:
+        rgba(255, 255, 255, 0.09);
 
     box-shadow:
         0 20px 50px rgba(0, 0, 0, 0.35);
@@ -1234,7 +891,7 @@
 
 
 [data-theme="dark"] .nav-dropdown__menu a {
-    color: #EAF2F8;
+    color: #F1F6FA;
 }
 
 
@@ -1246,679 +903,231 @@
 [data-theme="dark"] .nav-dropdown__menu a:hover {
     color: #6CB6EA;
 
-    background: rgba(108, 182, 234, 0.08);
-}
-
-
-[data-theme="dark"] .nav-dropdown__menu a:hover small {
-    color: #B5C7D6;
-}
-
-
-[data-theme="dark"] .nav-dropdown__menu a:first-child {
-    border-bottom-color: rgba(255, 255, 255, 0.08);
-}
-
-
-/* ---------------------------------------------------------
-   15. REDUCED MOTION
-   --------------------------------------------------------- */
-
-@media (prefers-reduced-motion: reduce) {
-
-    .nav-dropdown__menu {
-        animation: none;
-    }
-
-    .nav-dropdown__icon {
-        transition: none;
-    }
-
-    .nav-dropdown__trigger,
-    .nav-dropdown__menu a {
-        transition: none;
-    }
-}
-
-/* =========================================================
-   FLEXEN — MARKETS DROPDOWN
-   ========================================================= */
-
-
-/* ---------------------------------------------------------
-   MARKETS DROPDOWN WIDTH
-   --------------------------------------------------------- */
-
-.nav-dropdown__menu--markets {
-    width: 300px;
-}
-
-
-/* ---------------------------------------------------------
-   MARKET LINKS
-   --------------------------------------------------------- */
-
-.nav-dropdown__menu--markets a {
-    position: relative;
-
-    padding: 14px 15px;
-}
-
-
-/* ---------------------------------------------------------
-   MARKET NAME
-   --------------------------------------------------------- */
-
-.nav-dropdown__menu--markets a span {
-    font-size: 0.92rem;
-    font-weight: 650;
-
-    color: #0B1F3A;
-}
-
-
-/* ---------------------------------------------------------
-   MARKET DESCRIPTION
-   --------------------------------------------------------- */
-
-.nav-dropdown__menu--markets a small {
-    color: #64748B;
-
-    font-size: 0.77rem;
-    line-height: 1.35;
-}
-
-
-/* ---------------------------------------------------------
-   HOVER
-   --------------------------------------------------------- */
-
-.nav-dropdown__menu--markets a:hover {
-    background: rgba(11, 95, 165, 0.06);
-}
-
-
-.nav-dropdown__menu--markets a:hover span {
-    color: #0B5FA5;
-}
-
-
-/* ---------------------------------------------------------
-   FIRST ITEM
-   --------------------------------------------------------- */
-
-.nav-dropdown__menu--markets a:first-child {
-    margin-bottom: 5px;
-
-    padding-bottom: 15px;
-
-    border-bottom: 1px solid rgba(11, 31, 58, 0.07);
-}
-
-
-/* ---------------------------------------------------------
-   DARK THEME
-   --------------------------------------------------------- */
-
-[data-theme="dark"]
-.nav-dropdown__menu--markets a span {
-    color: #EAF2F8;
-}
-
-
-[data-theme="dark"]
-.nav-dropdown__menu--markets a small {
-    color: #94A8BA;
-}
-
-
-[data-theme="dark"]
-.nav-dropdown__menu--markets a:hover {
-    background: rgba(108, 182, 234, 0.08);
-}
-
-
-[data-theme="dark"]
-.nav-dropdown__menu--markets a:hover span {
-    color: #6CB6EA;
-}
-
-
-[data-theme="dark"]
-.nav-dropdown__menu--markets a:first-child {
-    border-bottom-color: rgba(255, 255, 255, 0.08);
-}
-
-
-/* ---------------------------------------------------------
-   MOBILE
-   --------------------------------------------------------- */
-
-@media (max-width: 900px) {
-
-    .nav-dropdown__menu--markets {
-        width: 100%;
-    }
-
-}
-
-/* =========================================================
-   FLEXEN — NAVBAR ACTIONS
-   ========================================================= */
-
-
-/* ---------------------------------------------------------
-   NAVBAR ACTIONS CONTAINER
-   --------------------------------------------------------- */
-
-.navbar__actions {
-    display: flex;
-    align-items: center;
-
-    gap: 12px;
-
-    margin-left: auto;
-
-    flex-shrink: 0;
-}
-
-
-/* ---------------------------------------------------------
-   GET A QUOTE — PRIMARY BUTTON
-   --------------------------------------------------------- */
-
-.navbar__actions .button--primary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    min-height: 46px;
-
-    padding: 0 21px;
-
-    color: #ffffff;
-
-    background: #0B5FA5;
-
-    border: 1px solid #0B5FA5;
-    border-radius: 7px;
-
-    font-family: inherit;
-    font-size: 0.9rem;
-    font-weight: 700;
-    line-height: 1;
-
-    text-decoration: none;
-    white-space: nowrap;
-
-    box-shadow:
-        0 4px 12px rgba(11, 95, 165, 0.16);
-
-    transition:
-        background-color 0.2s ease,
-        border-color 0.2s ease,
-        box-shadow 0.2s ease,
-        transform 0.2s ease;
-}
-
-
-/* ---------------------------------------------------------
-   BUTTON HOVER
-   --------------------------------------------------------- */
-
-.navbar__actions .button--primary:hover {
-    color: #ffffff;
-
-    background: #084A82;
-
-    border-color: #084A82;
-
-    box-shadow:
-        0 7px 18px rgba(11, 95, 165, 0.22);
-
-    transform: translateY(-1px);
-}
-
-
-/* ---------------------------------------------------------
-   BUTTON ACTIVE
-   --------------------------------------------------------- */
-
-.navbar__actions .button--primary:active {
-    transform: translateY(0);
-
-    box-shadow:
-        0 3px 8px rgba(11, 95, 165, 0.16);
-}
-
-
-/* ---------------------------------------------------------
-   BUTTON FOCUS
-   --------------------------------------------------------- */
-
-.navbar__actions .button--primary:focus-visible {
-    outline: 3px solid rgba(11, 95, 165, 0.28);
-    outline-offset: 3px;
+    background:
+        rgba(108, 182, 234, 0.08);
 }
 
 
 /* =========================================================
-   MOBILE MENU TOGGLE
+   19. TRANSPARENT / HERO NAVBAR
    ========================================================= */
 
-.mobile-menu-toggle {
-    display: none;
+/*
+   Apply:
 
-    position: relative;
+   <header
+       class="site-header site-header--transparent"
+   >
 
-    align-items: center;
-    justify-content: center;
+   when the navbar sits over a hero image.
+*/
 
-    flex-direction: column;
+.site-header--transparent {
+    position: absolute;
 
-    width: 44px;
-    height: 44px;
+    top: 0;
 
-    margin: 0;
-    padding: 0;
+    left: 0;
+
+    right: 0;
+
+    padding-top: 20px;
 
     background: transparent;
-
-    border: 1px solid rgba(11, 31, 58, 0.14);
-    border-radius: 7px;
-
-    cursor: pointer;
-
-    transition:
-        background-color 0.2s ease,
-        border-color 0.2s ease;
 }
 
 
-/* ---------------------------------------------------------
-   HAMBURGER LINES
-   --------------------------------------------------------- */
+.site-header--transparent .navbar {
+    background:
+        rgba(7, 21, 41, 0.28);
 
-.mobile-menu-toggle span {
-    display: block;
+    border-color:
+        rgba(255, 255, 255, 0.18);
 
-    width: 20px;
-    height: 2px;
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.12);
 
-    margin: 2.5px 0;
-
-    background: #0B1F3A;
-
-    border-radius: 999px;
-
-    transform-origin: center;
-
-    transition:
-        transform 0.25s ease,
-        opacity 0.2s ease,
-        background-color 0.2s ease;
+    backdrop-filter: blur(10px);
 }
 
 
-/* ---------------------------------------------------------
-   TOGGLE HOVER
-   --------------------------------------------------------- */
-
-.mobile-menu-toggle:hover {
-    background: rgba(11, 95, 165, 0.06);
-
-    border-color: rgba(11, 95, 165, 0.28);
+.site-header--transparent .navbar_item > a,
+.site-header--transparent .nav-dropdown__trigger {
+    color: #FFFFFF;
 }
 
 
-.mobile-menu-toggle:hover span {
-    background: #0B5FA5;
+.site-header--transparent .navbar_item > a:hover,
+.site-header--transparent .nav-dropdown__trigger:hover {
+    color: #FFFFFF;
+
+    background:
+        rgba(255, 255, 255, 0.09);
 }
 
 
-/* ---------------------------------------------------------
-   TOGGLE FOCUS
-   --------------------------------------------------------- */
+.site-header--transparent
+.navbar_item > a[aria-current="page"] {
+    color: #FFFFFF;
+}
 
-.mobile-menu-toggle:focus-visible {
-    outline: 3px solid rgba(11, 95, 165, 0.25);
-    outline-offset: 3px;
+
+.site-header--transparent
+.navbar_item > a[aria-current="page"]::after {
+    background: #FFFFFF;
 }
 
 
 /* =========================================================
-   OPEN MOBILE MENU STATE
+   20. TRANSPARENT → SOLID ON SCROLL
    ========================================================= */
 
-.mobile-menu-toggle[aria-expanded="true"] {
-    background: rgba(11, 95, 165, 0.06);
+.site-header--transparent.is-scrolled {
+    position: fixed;
 
-    border-color: rgba(11, 95, 165, 0.25);
+    padding: 8px 0;
+
+    background: transparent;
 }
 
 
-/* First line */
+.site-header--transparent.is-scrolled .navbar {
+    background:
+        rgba(255, 255, 255, 0.97);
 
-.mobile-menu-toggle[aria-expanded="true"] span:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
+    border-color:
+        rgba(11, 31, 58, 0.07);
+
+    box-shadow:
+        0 7px 25px rgba(7, 21, 41, 0.10);
 }
 
 
-/* Middle line */
-
-.mobile-menu-toggle[aria-expanded="true"] span:nth-child(2) {
-    opacity: 0;
-    transform: scaleX(0);
+.site-header--transparent.is-scrolled
+.navbar_item > a,
+.site-header--transparent.is-scrolled
+.nav-dropdown__trigger {
+    color: var(--flexen-navy);
 }
 
 
-/* Third line */
+.site-header--transparent.is-scrolled
+.navbar_item > a:hover,
+.site-header--transparent.is-scrolled
+.nav-dropdown__trigger:hover {
+    color: var(--flexen-blue);
 
-.mobile-menu-toggle[aria-expanded="true"] span:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
+    background:
+        rgba(11, 95, 165, 0.05);
 }
 
 
 /* =========================================================
-   TABLET
+   21. MOBILE NAVIGATION
    ========================================================= */
-
-@media (max-width: 1100px) {
-
-    .navbar__actions .button--primary {
-        min-height: 44px;
-
-        padding-left: 18px;
-        padding-right: 18px;
-
-        font-size: 0.88rem;
-    }
-
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 900px) {
-
-    .navbar__actions {
-        display: none;
-    }
-
-    .mobile-menu-toggle {
-        display: inline-flex;
-
-        margin-left: auto;
-    }
-
-}
-
-
-/* =========================================================
-   SMALL MOBILE
-   ========================================================= */
-
-@media (max-width: 480px) {
-
-    .mobile-menu-toggle {
-        width: 42px;
-        height: 42px;
-    }
-
-    .mobile-menu-toggle span {
-        width: 19px;
-    }
-
-}
-
-
-/* =========================================================
-   DARK THEME
-   ========================================================= */
-
-[data-theme="dark"] .mobile-menu-toggle {
-    border-color: rgba(255, 255, 255, 0.14);
-}
-
-
-[data-theme="dark"] .mobile-menu-toggle:hover {
-    background: rgba(108, 182, 234, 0.08);
-
-    border-color: rgba(108, 182, 234, 0.28);
-}
-
-
-[data-theme="dark"] .mobile-menu-toggle span {
-    background: #EAF2F8;
-}
-
-
-[data-theme="dark"] .mobile-menu-toggle:hover span {
-    background: #6CB6EA;
-}
-
-
-[data-theme="dark"]
-.mobile-menu-toggle[aria-expanded="true"] {
-    background: rgba(108, 182, 234, 0.08);
-
-    border-color: rgba(108, 182, 234, 0.28);
-}
-
-
-/* =========================================================
-   REDUCED MOTION
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    .navbar__actions .button--primary,
-    .mobile-menu-toggle,
-    .mobile-menu-toggle span {
-        transition: none;
-    }
-
-}
-
-/* =========================================================
-   FLEXEN — MOBILE NAVIGATION
-   ========================================================= */
-
-
-/* ---------------------------------------------------------
-   1. MOBILE NAVIGATION PANEL
-   --------------------------------------------------------- */
 
 .mobile-navigation {
     position: fixed;
 
-    top: var(--navbar-height, 72px);
+    top: calc(var(--navbar-height) + 28px);
+
     left: 0;
+
     right: 0;
 
     z-index: 999;
 
     width: 100%;
 
-    background: rgba(255, 255, 255, 0.98);
-
-    border-top: 1px solid rgba(11, 31, 58, 0.06);
-
-    box-shadow:
-        0 15px 35px rgba(7, 21, 41, 0.12);
+    max-height:
+        calc(100vh - var(--navbar-height) - 28px);
 
     overflow-y: auto;
 
-    max-height: calc(100vh - var(--navbar-height, 72px));
+    background:
+        rgba(255, 255, 255, 0.98);
 
-    animation: mobileNavigationIn 0.2s ease-out;
+    border-top:
+        1px solid rgba(11, 31, 58, 0.06);
+
+    box-shadow:
+        0 15px 40px rgba(7, 21, 41, 0.14);
+
+    backdrop-filter: blur(16px);
+
+    -webkit-backdrop-filter: blur(16px);
+
+    animation:
+        flexenMobileMenuIn 0.2s ease-out;
 }
 
 
-/* ---------------------------------------------------------
-   2. OPEN ANIMATION
-   --------------------------------------------------------- */
-
-@keyframes mobileNavigationIn {
+@keyframes flexenMobileMenuIn {
 
     from {
         opacity: 0;
-        transform: translateY(-8px);
+
+        transform:
+            translateY(-7px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
-    }
 
+        transform:
+            translateY(0);
+    }
 }
 
 
-/* ---------------------------------------------------------
-   3. NAVIGATION
-   --------------------------------------------------------- */
+/* =========================================================
+   22. MOBILE NAVIGATION LIST
+   ========================================================= */
 
 .mobile-navigation__nav {
     display: flex;
 
     flex-direction: column;
 
-    width: 100%;
-
-    padding: 12px 0 24px;
+    padding: 8px 0 20px;
 }
 
-
-/* ---------------------------------------------------------
-   4. NAVIGATION LIST
-   --------------------------------------------------------- */
 
 .mobile-navigation__list {
     display: flex;
 
     flex-direction: column;
 
-    width: 100%;
-
     margin: 0;
+
     padding: 0;
 
     list-style: none;
 }
 
 
-/* ---------------------------------------------------------
-   5. NAVIGATION ITEM
-   --------------------------------------------------------- */
-
 .mobile-navigation__item {
-    width: 100%;
-
-    margin: 0;
-    padding: 0;
-
-    border-bottom: 1px solid rgba(11, 31, 58, 0.06);
+    border-bottom:
+        1px solid rgba(11, 31, 58, 0.06);
 }
 
-
-/* ---------------------------------------------------------
-   6. STANDARD LINKS
-   --------------------------------------------------------- */
 
 .mobile-navigation__item > a {
     display: flex;
 
     align-items: center;
 
-    width: 100%;
+    min-height: 52px;
 
-    min-height: 54px;
+    padding: 0;
 
-    padding: 0 4px;
+    color: var(--flexen-navy);
 
-    color: #0B1F3A;
+    font-size: 0.96rem;
 
-    font-family: inherit;
-    font-size: 1rem;
     font-weight: 600;
-
-    line-height: 1.3;
 
     text-decoration: none;
-
-    transition:
-        color 0.2s ease,
-        background-color 0.2s ease,
-        padding-left 0.2s ease;
-}
-
-
-/* ---------------------------------------------------------
-   7. LINK HOVER
-   --------------------------------------------------------- */
-
-.mobile-navigation__item > a:hover {
-    color: #0B5FA5;
-
-    background: rgba(11, 95, 165, 0.045);
-
-    padding-left: 9px;
-}
-
-
-/* ---------------------------------------------------------
-   8. ACTIVE LINK
-   --------------------------------------------------------- */
-
-.mobile-navigation__item > a[aria-current="page"] {
-    color: #0B5FA5;
-
-    font-weight: 700;
-}
-
-
-/* ---------------------------------------------------------
-   9. DROPDOWN
-   --------------------------------------------------------- */
-
-.mobile-dropdown {
-    width: 100%;
-}
-
-
-/* ---------------------------------------------------------
-   10. DROPDOWN TRIGGER
-   --------------------------------------------------------- */
-
-.mobile-dropdown__trigger {
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    width: 100%;
-
-    min-height: 54px;
-
-    padding: 0 4px;
-
-    margin: 0;
-
-    color: #0B1F3A;
-
-    background: transparent;
-
-    border: 0;
-
-    font-family: inherit;
-    font-size: 1rem;
-    font-weight: 600;
-
-    text-align: left;
-
-    cursor: pointer;
 
     transition:
         color 0.2s ease,
@@ -1926,35 +1135,68 @@
 }
 
 
-/* ---------------------------------------------------------
-   11. DROPDOWN TRIGGER HOVER
-   --------------------------------------------------------- */
+.mobile-navigation__item > a:hover {
+    color: var(--flexen-blue);
+
+    background:
+        rgba(11, 95, 165, 0.04);
+}
+
+
+.mobile-navigation__item > a[aria-current="page"] {
+    color: var(--flexen-blue);
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   23. MOBILE DROPDOWNS
+   ========================================================= */
+
+.mobile-dropdown__trigger {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    width: 100%;
+
+    min-height: 52px;
+
+    padding: 0;
+
+    color: var(--flexen-navy);
+
+    background: transparent;
+
+    border: 0;
+
+    font-family: inherit;
+
+    font-size: 0.96rem;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
 
 .mobile-dropdown__trigger:hover {
-    color: #0B5FA5;
-
-    background: rgba(11, 95, 165, 0.045);
+    color: var(--flexen-blue);
 }
 
-
-/* ---------------------------------------------------------
-   12. DROPDOWN ICON
-   --------------------------------------------------------- */
 
 .mobile-dropdown__icon {
-    flex-shrink: 0;
+    width: 12px;
 
-    width: 13px;
-    height: 13px;
-
-    margin-right: 3px;
+    height: 12px;
 
     transition:
-        transform 0.25s ease;
+        transform 0.2s ease;
 }
 
-
-/* Rotate when open */
 
 .mobile-dropdown__trigger[aria-expanded="true"]
 .mobile-dropdown__icon {
@@ -1962,16 +1204,12 @@
 }
 
 
-/* Active dropdown */
-
 .mobile-dropdown__trigger[aria-expanded="true"] {
-    color: #0B5FA5;
+    color: var(--flexen-blue);
 }
 
 
-/* ---------------------------------------------------------
-   13. DROPDOWN MENU
-   --------------------------------------------------------- */
+/* Mobile dropdown */
 
 .mobile-dropdown__menu {
     display: flex;
@@ -1980,286 +1218,257 @@
 
     gap: 2px;
 
-    margin: 0 0 8px;
+    margin-bottom: 8px;
 
-    padding: 5px 0 5px 13px;
+    padding:
+        5px 0
+        5px 14px;
 
-    background: rgba(11, 95, 165, 0.035);
+    background:
+        rgba(11, 95, 165, 0.035);
 
-    border-left: 2px solid rgba(11, 95, 165, 0.16);
+    border-left:
+        2px solid rgba(11, 95, 165, 0.16);
 
-    border-radius: 0 7px 7px 0;
-
-    animation: mobileDropdownIn 0.18s ease-out;
+    border-radius:
+        0 6px 6px 0;
 }
 
-
-/* ---------------------------------------------------------
-   14. DROPDOWN ANIMATION
-   --------------------------------------------------------- */
-
-@keyframes mobileDropdownIn {
-
-    from {
-        opacity: 0;
-        transform: translateY(-4px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-}
-
-
-/* ---------------------------------------------------------
-   15. DROPDOWN LINKS
-   --------------------------------------------------------- */
 
 .mobile-dropdown__menu a {
     display: flex;
 
     align-items: center;
 
-    min-height: 45px;
+    min-height: 43px;
 
     padding: 0 12px;
 
-    color: #526579;
+    color: #536A80;
 
-    font-size: 0.9rem;
+    font-size: 0.87rem;
+
     font-weight: 500;
 
     text-decoration: none;
 
-    border-radius: 6px;
-
-    transition:
-        color 0.2s ease,
-        background-color 0.2s ease,
-        padding-left 0.2s ease;
+    border-radius: 5px;
 }
 
-
-/* ---------------------------------------------------------
-   16. DROPDOWN LINK HOVER
-   --------------------------------------------------------- */
 
 .mobile-dropdown__menu a:hover {
-    color: #0B5FA5;
+    color: var(--flexen-blue);
 
-    background: rgba(11, 95, 165, 0.06);
-
-    padding-left: 17px;
+    background:
+        rgba(11, 95, 165, 0.05);
 }
 
 
-/* ---------------------------------------------------------
-   17. MOBILE CTA
-   --------------------------------------------------------- */
+/* =========================================================
+   24. MOBILE CTA
+   ========================================================= */
 
 .mobile-navigation__actions {
     width: 100%;
 
-    padding-top: 20px;
+    padding-top: 18px;
 }
 
-
-/* ---------------------------------------------------------
-   18. CTA BUTTON
-   --------------------------------------------------------- */
 
 .mobile-navigation__actions .button--primary {
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     width: 100%;
 
-    min-height: 50px;
+    min-height: 48px;
 
-    padding: 0 20px;
+    color: #FFFFFF;
 
-    color: #ffffff;
+    background:
+        linear-gradient(
+            135deg,
+            #149BEE,
+            #0B8FE3
+        );
 
-    background: #0B5FA5;
+    border-radius: 6px;
 
-    border: 1px solid #0B5FA5;
-    border-radius: 7px;
+    font-size: 0.9rem;
 
-    font-size: 0.95rem;
     font-weight: 700;
 
     text-decoration: none;
 
     box-shadow:
-        0 5px 15px rgba(11, 95, 165, 0.16);
-
-    transition:
-        background-color 0.2s ease,
-        border-color 0.2s ease,
-        box-shadow 0.2s ease,
-        transform 0.2s ease;
-}
-
-
-.mobile-navigation__actions .button--primary:hover {
-    color: #ffffff;
-
-    background: #084A82;
-
-    border-color: #084A82;
-
-    box-shadow:
-        0 7px 20px rgba(11, 95, 165, 0.22);
-
-    transform: translateY(-1px);
-}
-
-
-/* ---------------------------------------------------------
-   19. FOCUS STATES
-   --------------------------------------------------------- */
-
-.mobile-navigation__item > a:focus-visible,
-.mobile-dropdown__trigger:focus-visible {
-    outline: 3px solid rgba(11, 95, 165, 0.25);
-    outline-offset: -3px;
+        0 5px 15px rgba(11, 95, 165, 0.15);
 }
 
 
 /* =========================================================
-   DARK THEME
+   25. MOBILE BREAKPOINT
    ========================================================= */
 
-[data-theme="dark"] .mobile-navigation {
-    background: rgba(7, 21, 41, 0.98);
+@media (max-width: 900px) {
 
-    border-top-color: rgba(255, 255, 255, 0.07);
+    .site-header {
+        --navbar-height: 64px;
 
-    box-shadow:
-        0 15px 40px rgba(0, 0, 0, 0.35);
-}
-
-
-[data-theme="dark"] .mobile-navigation__item {
-    border-bottom-color: rgba(255, 255, 255, 0.07);
-}
+        padding: 10px 0;
+    }
 
 
-[data-theme="dark"] .mobile-navigation__item > a {
-    color: #EAF2F8;
-}
+    .navbar {
+        min-height: var(--navbar-height);
+
+        padding: 0 14px;
+
+        border-radius: 9px;
+    }
 
 
-[data-theme="dark"] .mobile-navigation__item > a:hover {
-    color: #6CB6EA;
-
-    background: rgba(108, 182, 234, 0.06);
-}
+    .navbar__brand img {
+        width: 140px;
+    }
 
 
-[data-theme="dark"]
-.mobile-navigation__item > a[aria-current="page"] {
-    color: #6CB6EA;
-}
+    .navbar__desktop {
+        display: none;
+    }
 
 
-[data-theme="dark"] .mobile-dropdown__trigger {
-    color: #EAF2F8;
-}
+    .navbar__actions {
+        display: none;
+    }
 
 
-[data-theme="dark"] .mobile-dropdown__trigger:hover,
-[data-theme="dark"]
-.mobile-dropdown__trigger[aria-expanded="true"] {
-    color: #6CB6EA;
-
-    background: rgba(108, 182, 234, 0.06);
-}
+    .mobile-menu-toggle {
+        display: inline-flex;
+    }
 
 
-[data-theme="dark"] .mobile-dropdown__menu {
-    background: rgba(108, 182, 234, 0.045);
-
-    border-left-color: rgba(108, 182, 234, 0.25);
-}
+    .site-header.is-scrolled {
+        padding: 6px 0;
+    }
 
 
-[data-theme="dark"] .mobile-dropdown__menu a {
-    color: #AFC0CF;
-}
+    .site-header.is-scrolled .navbar {
+        min-height: 58px;
+    }
 
-
-[data-theme="dark"] .mobile-dropdown__menu a:hover {
-    color: #6CB6EA;
-
-    background: rgba(108, 182, 234, 0.07);
-}
-
-
-/* =========================================================
-   TABLET
-   ========================================================= */
-
-@media (min-width: 901px) {
 
     .mobile-navigation {
-        display: none !important;
+        top: calc(var(--navbar-height) + 20px);
+
+        max-height:
+            calc(100vh - var(--navbar-height) - 20px);
     }
 
 }
 
 
 /* =========================================================
-   SMALL MOBILE
+   26. SMALL MOBILE
    ========================================================= */
 
 @media (max-width: 480px) {
 
-    .mobile-navigation__nav {
-        padding-top: 8px;
-        padding-bottom: 20px;
+    .site-header {
+        --navbar-height: 60px;
     }
 
-    .mobile-navigation__item > a,
-    .mobile-dropdown__trigger {
-        min-height: 52px;
 
-        font-size: 0.95rem;
+    .navbar {
+        padding: 0 12px;
     }
 
-    .mobile-dropdown__menu a {
-        min-height: 43px;
 
-        font-size: 0.87rem;
+    .navbar__brand img {
+        width: 125px;
     }
 
-    .mobile-navigation__actions {
-        padding-top: 16px;
+
+    .mobile-menu-toggle {
+        width: 40px;
+
+        height: 40px;
     }
 
 }
 
 
 /* =========================================================
-   REDUCED MOTION
+   27. TABLET DESKTOP ADJUSTMENT
+   ========================================================= */
+
+@media (min-width: 901px) and (max-width: 1150px) {
+
+    .navbar__desktop {
+        margin-left: 12px;
+    }
+
+
+    .navbar_item > a,
+    .nav-dropdown__trigger {
+        padding-left: 10px;
+
+        padding-right: 10px;
+
+        font-size: 0.86rem;
+    }
+
+
+    .navbar__brand img {
+        width: 140px;
+    }
+
+
+    .navbar__actions {
+        margin-left: 8px;
+    }
+
+
+    .navbar__actions .button--primary {
+        min-width: 135px;
+
+        padding: 0 14px;
+    }
+
+}
+
+
+/* =========================================================
+   28. HIDDEN ATTRIBUTE
+   ========================================================= */
+
+[hidden] {
+    display: none !important;
+}
+
+
+/* =========================================================
+   29. REDUCED MOTION
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
+    .site-header,
+    .navbar,
+    .navbar__brand,
+    .navbar_item > a,
+    .nav-dropdown__trigger,
+    .nav-dropdown__icon,
+    .nav-dropdown__menu,
+    .navbar__actions .button--primary,
+    .mobile-menu-toggle,
+    .mobile-menu-toggle span,
     .mobile-navigation,
-    .mobile-dropdown__menu {
+    .mobile-dropdown__icon {
         animation: none;
-    }
 
-    .mobile-navigation__item > a,
-    .mobile-dropdown__trigger,
-    .mobile-dropdown__icon,
-    .mobile-dropdown__menu a,
-    .mobile-navigation__actions .button--primary {
         transition: none;
     }
 
